@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "718876871766",
+    "project_id": "digital-health-kit-931e6",
+    "storage_bucket": "digital-health-kit-931e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718876871766:android:476b6b186ebaabf4e83ff7",
+        "android_client_info": {
+          "package_name": "com.healthapps.digitalhealthkit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_aJXlKBGtaM7icaX8Rr3iBnuws9CMzEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
