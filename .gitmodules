@@ -1,0 +1,3 @@
+[submodule "DigitalHealthKit"]
+	path = DigitalHealthKit
+	url = https://github.com/OrealAslam/DigitalHealthKit.git

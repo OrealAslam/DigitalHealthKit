@@ -1,0 +1,11 @@
+{
+  "name": "DigitalHealthKit",
+  "displayName": "DigitalHealthKit",
+  "plugins": [
+    "@notifee/react-native"
+  ],
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-3781511156022357~6826036258",
+    "ios_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx"
+  }
+}
