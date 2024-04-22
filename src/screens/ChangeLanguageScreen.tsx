@@ -27,6 +27,7 @@ const ChangeLanguageScreen = ({navigation}: {navigation: any}) => {
     {key: 'fr', name: 'French'},
     {key: 'it', name: 'Italian'},
     {key: 'ru', name: 'Russian'},
+    {key: 'jp', name: 'Japanese'},
   ];
 
   useEffect(() => {

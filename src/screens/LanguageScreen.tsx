@@ -192,6 +192,23 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
             Russian
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setselectedLang('jp')}
+          activeOpacity={0.9}
+          style={[
+            styles.languageBox,
+            selectedLang == 'jp'
+              ? {backgroundColor: '#725DF2'}
+              : {backgroundColor: '#EBEBEC'},
+          ]}>
+          <Text
+            style={[
+              styles.language,
+              selectedLang == 'jp' ? {color: '#fff'} : {color: '#000'},
+            ]}>
+            Japanese
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.bannerAd}>
