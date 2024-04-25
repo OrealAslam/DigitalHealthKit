@@ -56,7 +56,6 @@ const HealthScreen = (props: any) => {
   useEffect(() => {
     setlangstr(language);
     if (category == 'bp') {
-      console.log('que', langstr?.article.articledata?.bp.questions);
       displayData(langstr?.article.articledata?.bp.questions);
     }
     if (category == 'bs') {

@@ -82,7 +82,7 @@ const BottomMenu = (props: any) => {
 
   return (
     <>
-      <View  style={{height: 'auto', width: width, position: 'absolute', bottom: 0,elevation: 5,}}>
+      <View  style={{height: 'auto', width: width, position: 'absolute', bottom: 0,elevation: 5}}>
         {menu()} 
         <Banner />
       </View>

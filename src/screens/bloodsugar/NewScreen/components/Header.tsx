@@ -19,7 +19,7 @@ const Header = (props:any) => {
             source={require('../../../../assets/icons/whiteicon.png')}
           />
         </TouchableOpacity>
-        <Text style={styles.headerText}>{props.language.dashobard.bp}</Text>
+        <Text style={styles.headerText}>{props.language.dashobard.bs}</Text>
       </View>
 
       <View style={styles.col}>

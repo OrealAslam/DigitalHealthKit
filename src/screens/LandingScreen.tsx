@@ -1,4 +1,4 @@
-import { StatusBar, SafeAreaView, View } from 'react-native';
+import {View, SafeAreaViewBase } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import BottomMenu from '../components/BottomMenu';
 import { useIsFocused } from '@react-navigation/native';

@@ -48,7 +48,6 @@ const LineChartAdComponent = (props: any) => {
           // record added already
           setbtnType('Unlock');
         }
-
         let adSeen = await get_async_data('line_chart_bp_ad');
         let chartData = await get_chart_data('bp');
         let dataArr = [];
@@ -154,7 +153,7 @@ const LineChartAdComponent = (props: any) => {
             <TouchableOpacity
               style={styles.btn}
               onPress={() => {
-                props.navigation.navigate('AddBloodPressure');
+                props.navigation.navigate('AddNewBloodPressureScreen'); //AddBloodPressure
               }}>
               <Text style={styles.addbtnText}>{props.langstr.main.add}</Text>
             </TouchableOpacity>

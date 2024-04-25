@@ -71,7 +71,7 @@ export const Banner = () => {
       unitId={BANNER_AD_ID}
       size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
       requestOptions={{requestNonPersonalizedAdsOnly: true,  networkExtras: {
-        collapsible: 'bottom'
+        collapsible: 'top'
       }}}></BannerAd>
   );
 };

@@ -154,7 +154,7 @@ const BloodSugarChart = (props: any) => {
           <TouchableOpacity
             style={styles.btn}
             onPress={() => {
-              props.navigation.navigate('AddBloodSugar');
+              props.navigation.navigate('AddNewBloodSugarScreen');
             }}>
             <Text style={styles.addbtnText}>{props.langstr.main.add}</Text>
           </TouchableOpacity>

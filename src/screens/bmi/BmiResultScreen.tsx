@@ -79,7 +79,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
   useEffect(() => {
     (async () => {
       try {
-        await analytics().logEvent('bmi_result_screen');
+        await analytics().logEvent('bmi_result_screen'); 
         let lan = await lang();
         setlanguage(lan);
         let response = await get_report(REPORT_TYPES.bmi);

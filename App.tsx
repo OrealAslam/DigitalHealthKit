@@ -7,7 +7,6 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import SplashScreen from 'react-native-splash-screen';
 import {useAppOpenAd} from 'react-native-google-mobile-ads';
 import {APPOPEN_AD_ID} from './src/Helper/AdManager';
-// import Smartlook from 'react-native-smartlook-analytics';
 import {View} from 'react-native';
 import {lang} from './global';
 // import notifee, {EventType, AndroidImportance} from '@notifee/react-native';
@@ -64,12 +63,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      // Smartlook.instance.preferences.setProjectKey(
-      //   '8c9db94b9bf95cec224906c4cd0d1a4ebe0225b2'
-      // );
-      // Smartlook.instance.start();
       // crashlytics().log('App crashes');
-
       let onboard = await get_async_data('on_board');
       let rate = await get_async_data('alreadyrate');
       if (rate && rate == 'rated') {
@@ -80,8 +74,6 @@ const App = () => {
       if (onboard != null) {
         setfirstTime(false);
       }
-      // let isRecording = await Smartlook.instance.state.isRecording();
-      // console.log('isRecording Session', isRecording);
     })();
   }, []);
 

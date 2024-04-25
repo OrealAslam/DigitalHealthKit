@@ -337,6 +337,7 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
 
           {message && errorMessage()}
         </ScrollView>
+        
         <SaveButton
           return={navigation}
           screenname={'BloodSugar'}

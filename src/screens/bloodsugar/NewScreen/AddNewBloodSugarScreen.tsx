@@ -11,42 +11,29 @@ import {
 import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import AverageComponent from './components/AverageComponent';
-import {
-  REPORT_TYPES,
-  filter_report,
-  get_report,
-} from '../../../Helper/AppHelper';
+import {REPORT_TYPES, get_report} from '../../../Helper/AppHelper';
 import {lang} from '../../../../global';
 import LineChartAdComponent from '../components/LineChartAdComponent';
 import Chart from '../components/Chart';
 import PieChartAdComponent from '../components/PieChartAdComponent';
 import PieChartComponent from '../components/PieChartComponent';
+import {NativeAd150} from '../../../Helper/NativeAd150';
 const {width, height} = Dimensions.get('window');
 
-const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
+const AddNewBloodSugarScreen = ({navigation}: {navigation: any}) => {
   const [averagemodal, setaveragemodal] = useState(false);
-  const [selected, setselected] = useState('Latest');
+  const [selected, setselected] = useState('After sleep');
+  const [apidata, setapidata] = useState([]);
   const [language, setlanguage] = useState({
-    dashobard: {bp: 'Blood Pressure'},
+    dashobard: {bs: 'Blood Sugar'},
     main: {add: '', unlock: ''},
     tracker: {
-      bpChartText: '',
-      bpCharAddtText: '',
       bsChartText: '',
       bsCharAddtText: '',
-      bmiChartText: '',
-      bmiChartAddText: '',
     },
   });
-  const [filterdata, setfilterdata] = useState({
-    avg_24: {},
-    avg: {},
-    minimum: {},
-    maximum: {},
-    Last_Insert_data: {},
-  });
-  const [carddata, setcarddata] = useState({});
-  const [card, setcard] = useState(<></>);
+  const [recent, setrecent] = useState(null);
+  const [average, setaverage] = useState(null);
   const back = () => {
     navigation.navigate('HomeScreen', {tab: 'tracker'});
   };
@@ -55,9 +42,9 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
     (async () => {
       try {
         let lan = await lang();
-        const filter = await filter_report();
+        let response = await get_report(REPORT_TYPES.sugar);
+        setapidata(response);
         setlanguage(lan);
-        setfilterdata(filter);
       } catch (e) {
         console.log(e);
       }
@@ -65,73 +52,58 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
   }, []);
 
   useEffect(() => {
-    switch (selected) {
-      case 'avg_24':
-        setfilterdata(filterdata);
-        setcard(displayCard(filterdata?.avg_24));
-        break;
-      case 'Average':
-        setcarddata(filterdata.avg);
-        setcard(displayCard(filterdata?.avg));
-        break;
-      case 'Latest':
-        setcarddata(filterdata.Last_Insert_data);
-        setcard(displayCard(filterdata?.Last_Insert_data));
-        break;
-      case 'Max':
-        setcarddata(filterdata.maximum);
-        setcard(displayCard(filterdata?.maximum));
-        break;
-      case 'Min':
-        setcarddata(filterdata.minimum);
-        setcard(displayCard(filterdata?.minimum));
-        break;
-      default:
-        setcarddata(filterdata.Last_Insert_data);
-        setcard(displayCard(filterdata?.Last_Insert_data));
-    }
-  }, [filterdata, selected, carddata]);
+    sortRecentRecord();
+    calculateAverage();
+  }, [apidata, selected]);
 
-  const displayCard = (data: any) => {
+  const sortRecentRecord = () => {
+    // Filter records where sugar_check is "After sleep"
+    const filterRecords = apidata.filter(record => {
+      return record.sugar_check == selected;
+    });
+    // console.log('filtered data', afterSleepRecords);
+    // Sort filtered records by datetime in descending order
+    let filter = filterRecords.sort(
+      (a, b) => new Date(b?.datetime) - new Date(a?.datetime),
+    );
+    setrecent(filter[0]);
+    // Return the most recent record
+    // return afterSleepRecords[0];
+  };
+
+  const calculateAverage = () => {
+    const record = apidata.filter(record => {
+      return record.sugar_check == selected;
+    });
+
+    const totalSugarConcentration = record.reduce((total, record) => total + record?.sugar_concentration, 0);
+    // console.log('record :', record);
+    const averageSugarConcentration = totalSugarConcentration / record.length;
+    console.log('record', record);
+    setaverage(averageSugarConcentration);
+  }
+
+  const displayCard = () => {
     return (
-      <>
-        <View style={[styles.row, {width: '80%', marginTop: '5%'}]}>
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>Systolic</Text>
-            <View style={styles.cardrow}>
-              <Text style={styles.cardedesc}>{data.systolic_pressure}</Text>
-              <Text style={styles.unit}>mmHg</Text>
-            </View>
-          </View>
-
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>Diastolic</Text>
-            <View style={styles.cardrow}>
-              <Text style={styles.cardedesc}>{data.diastolic_pressure}</Text>
-              <Text style={styles.unit}>mmHg</Text>
-            </View>
+      <View style={[styles.row, {width: '85%', marginTop: '5%'}]}>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Recent</Text>
+          <View style={styles.cardrow}>
+            <Text style={styles.cardedesc}>
+              {recent != null ? recent?.sugar_concentration : 'Null'}
+            </Text>
+            <Text style={styles.unit}>mgd/L</Text>
           </View>
         </View>
 
-        <View style={[styles.row, {width: '82%'}]}>
-          <View
-            style={[
-              styles.card,
-              {
-                width: '100%',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              },
-            ]}>
-            <Text style={styles.cardTitle}>Pulse</Text>
-            <View style={styles.cardrow}>
-              <Text style={styles.cardedesc}>{selected == 'Latest' ? data.pulse : data.pulse_pressure}</Text>
-              <Text style={styles.unit}>BPM</Text>
-            </View>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Average</Text>
+          <View style={styles.cardrow}>
+            <Text style={styles.cardedesc}>{average != null ? average : 'Null'}</Text>
+            <Text style={styles.unit}>mgd/L</Text>
           </View>
         </View>
-      </>
+      </View>
     );
   };
 
@@ -146,8 +118,8 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
         style={styles.scrollContainer}>
         <View style={styles.row}>
           <Image
-            style={styles.bpbag}
-            source={require('../../../assets/icons/bpbag.png')}
+            style={styles.sugarbag}
+            source={require('../../../assets/icons/sugar.png')}
           />
           <TouchableOpacity onPress={() => setaveragemodal(true)}>
             <ImageBackground
@@ -162,13 +134,18 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
             </ImageBackground>
           </TouchableOpacity>
         </View>
-
-        {card}
-
+        {displayCard()}
+        <View style={styles.clr}></View>
         {/* Graph Container */}
         <View style={styles.graphContainer}>
-          <Chart />
+          <View style={{backgroundColor: '#F4F5F6', borderRadius: 12}}>
+            <Chart />
+          </View>
           <View style={styles.clr}></View>
+          <View style={styles.NativeAd}>
+            <NativeAd150 />
+          </View>
+
           <PieChartComponent />
           <View style={[styles.clr, {marginBottom: 40}]}></View>
         </View>
@@ -176,7 +153,7 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('AddBloodPressure');
+          navigation.navigate('AddBloodSugar');
         }}
         style={{
           position: 'absolute',
@@ -213,13 +190,20 @@ const styles = StyleSheet.create({
   scrollContainer: {
     width: width,
     position: 'absolute',
-    top: '10%',
+    top: '7%',
     height: '90%',
     paddingVertical: 20,
   },
-  bpbag: {
-    width: 58,
-    height: 82.17,
+  sugarbag: {
+    width: 47.13,
+    height: 77.52,
+  },
+  NativeAd: {
+    width: width * 0.86,
+    height: undefined,
+    backgroundColor: `rgba(0,0,0,0.3)`,
+    alignSelf: 'center',
+    marginBottom: 15,
   },
   row: {
     width: width * 0.85,
@@ -275,4 +259,4 @@ const styles = StyleSheet.create({
     height: 65.28,
   },
 });
-export default AddNewBloodPressureScreen;
+export default AddNewBloodSugarScreen;

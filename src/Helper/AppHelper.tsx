@@ -20,6 +20,7 @@ export const GET_BLOGS = BASE_URL + 'get-blogs';
 export const GET_MEAL_LIST = BASE_URL + 'get-meal-list';
 export const GET_MEAL = BASE_URL + 'get-meal';
 export const BOOKMARK = BASE_URL + 'bookmark';
+export const FILTER_REPORT = BASE_URL + 'get-filter-report';
 export const NOTIFY = BASE_URL + 'notify';
 const BARCODE_API_URL = 'https://world.openfoodfacts.net/api/v2/product/';
 
@@ -134,7 +135,7 @@ export const dashboard = async () => {
 };
 export const get_report = async (reportType: string) => {
   let userID = await get_async_data('user_id');
-  console.log('userID', userID);
+  console.log(userID);
   const resposne = await fetch(GET_REPORT, {
     method: 'POST',
     headers: {
@@ -142,6 +143,19 @@ export const get_report = async (reportType: string) => {
       'X-Requested-With': 'XMLHttpRequest',
     },
     body: JSON.stringify({user_id: userID, report_type: reportType}),
+  });
+  let res = await resposne.json();
+  return res.data;
+};
+export const filter_report = async () => {
+  let userID = await get_async_data('user_id');
+  const resposne = await fetch(FILTER_REPORT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+    body: JSON.stringify({user_id: userID, report_type: 'bp'}),
   });
   let res = await resposne.json();
   return res.data;
