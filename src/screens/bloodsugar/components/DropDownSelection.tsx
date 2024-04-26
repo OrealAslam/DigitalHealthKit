@@ -7,7 +7,7 @@ import {
   BackHandler,
   Image,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 const {width, height} = Dimensions.get('screen');
 const DropDownSelection = (props: any) => {
   const [selectedopt, setselectedopt] = useState('');
@@ -55,7 +55,82 @@ const DropDownSelection = (props: any) => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.mainArea}>{displayButons()}</View>
+        <View style={styles.mainArea}>
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'After meal' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('After meal')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'After meal' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.AfterMeal}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Before meal' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Before meal')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Before meal' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.BeforeMeal}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'After sleep' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('After sleep')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'After sleep' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.AfterSleep}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Fasting' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Fasting')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Fasting' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.Fasting}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Other' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Other')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Other' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.Other}
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.buttonContainer}>
           <TouchableOpacity

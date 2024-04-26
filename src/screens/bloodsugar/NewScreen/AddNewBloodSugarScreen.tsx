@@ -79,7 +79,6 @@ const AddNewBloodSugarScreen = ({navigation}: {navigation: any}) => {
     const totalSugarConcentration = record.reduce((total, record) => total + record?.sugar_concentration, 0);
     // console.log('record :', record);
     const averageSugarConcentration = totalSugarConcentration / record.length;
-    console.log('record', record);
     setaverage(averageSugarConcentration);
   }
 

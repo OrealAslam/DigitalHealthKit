@@ -23,11 +23,11 @@ import DateTimeComponent from '../../components/DateTimeComponent';
 import SaveButton from '../../components/SaveButton';
 import PageHeader from './components/PageHeader';
 import DropDownSelection from './components/DropDownSelection';
-import {Banner, INTERSITIAL_AD_ID_OLD} from '../../Helper/AdManager';
-import LoadingAnimation from '../../components/LoadingAnimation';
-import SugarResultScreen from './SugarResultScreen';
+import {Banner, INTERSITIAL_AD_ID} from '../../Helper/AdManager';
+// import LoadingAnimation from '../../components/LoadingAnimation';
+// import SugarResultScreen from './SugarResultScreen';
 import {lang} from '../../../global';
-import ZoomAnimation from '../../components/ZoomAnimation';
+// import ZoomAnimation from '../../components/ZoomAnimation';
 import DisplayAd from '../../components/DisplayAd';
 const {width, height} = Dimensions.get('window');
 const itemWidth = width - 65;
@@ -53,10 +53,11 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
   const [message, setmessage] = useState(false);
   const [result, setresult] = useState('Normal');
   const [chartPercentage, setchartPercentage] = useState(36);
-  const [loader, setloader] = useState(false);
+  // const [loader, setloader] = useState(false);
   const [closeloader, setcloseloader] = useState(false);
   const [disablesavebtn, setdisablesavebtn] = useState(false);
   const [show, setshow] = useState(false);
+  const [save, setsave] = useState(false);
   const [language, setlanguage] = useState({
     dashobard: {bs: '', SugarConcentration: ''},
     main: {
@@ -222,8 +223,18 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
   };
 
   const _continue = async () => {
-    setcloseloader(false);
-    navigation.navigate('HomeScreen', {tab: 'home'});
+    try {
+      setcloseloader(false);
+      if(save == true) {
+        setsave(false);
+        navigation.navigate('SugarResultScreen');
+      } else{
+        navigation.navigate('HomeScreen', {tab: 'home'});
+      }
+    } catch(e) {
+      console.log('catch error', e);
+      return ;
+    }
   };
   return (
     <>
@@ -348,14 +359,15 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
           notes={unit}
           today={today}
           time={time}
-          setloader={setloader}
+          // setloader={setloader}
+          setsave={setsave}
           result={result}
           disablesavebtn={disablesavebtn}
           langstr={langstr}
         />
       </View>
       <Banner />
-      {loader && <LoadingAnimation iconType={'tick'} />}
+      {/* {loader && <LoadingAnimation iconType={'tick'} />} */}
 
       {show && (
         <DropDownSelection
@@ -367,7 +379,7 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
         />
       )}
 
-      {closeloader && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID_OLD} />)}
+{closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
     </>
   );
 }

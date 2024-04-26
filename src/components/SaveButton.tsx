@@ -41,7 +41,7 @@ export default function SaveButton(props: any) {
         setloader(false);
       } else {
         props.setmessage(false);
-        props.setloader(true);
+        // props.setloader(true);
         let userID = await get_async_data('user_id');
         let choosenDate =
           props.selectedDate == '' ? props.today : props.selectedDate;
@@ -64,18 +64,19 @@ export default function SaveButton(props: any) {
           let sys = props.systolicpressure.toString();
           let dis = props.diastolicpressure.toString();
           let saveData = sys + `/` + dis;
+          props.setsave(true);
           await set_async_data('record_bp', saveData.toString());
-          props.setloader(false);
-          setloader(false);
-          props.return.navigate('ResultPageScreen');
+          // props.setloader(false);
+          // props.return.navigate('ResultPageScreen');
         } else {
-          props.return.navigate('ResultPageScreen');
+          props.setsave(true);
+          // props.return.navigate('ResultPageScreen');
         }
       }
     }
     if (props.screenname == 'BloodSugar') {
       props.setmessage(false);
-      props.setloader(true);
+      // props.setloader(true);
       let userID = await get_async_data('user_id');
       let choosenDate =
         props.selectedDate == '' ? props.today : props.selectedDate;
@@ -91,11 +92,12 @@ export default function SaveButton(props: any) {
       };
       let response = await add_report(data);
       if (response) {
+        props.setsave(true);
         await set_async_data('record_entry', 'record_entered');
         await set_async_data('record_bs', props.sugarconcentration.toString());
-        props.setloader(false);
+        // props.setloader(false);
         setloader(false);
-        props.return.navigate('SugarResultScreen');
+        // props.return.navigate('SugarResultScreen');
       }
     }
     if (props.screenname == 'Temperature') {
@@ -105,7 +107,7 @@ export default function SaveButton(props: any) {
         setloader(false);
       } else {
         props.setmessage(false);
-        props.setloader(true);
+        // props.setloader(true);
         if (props.tempunit == '°C') {
           if (props.temperature > 38 || props.temperature < 36) {
             ToastAndroid.showWithGravity(
@@ -113,7 +115,7 @@ export default function SaveButton(props: any) {
               ToastAndroid.SHORT,
               ToastAndroid.CENTER,
             );
-            props.setloader(false);
+            // props.setloader(false);
             setloader(false);
           } else {
             let userID = await get_async_data('user_id');
@@ -131,11 +133,12 @@ export default function SaveButton(props: any) {
 
             let response = await add_report(data);
             if (response) {
-              props.setloader(false);
+              // props.setloader(false);
               setloader(false);
+              props.setsave(true);
               let e = props.temperature + props.tempunit;
               await set_async_data('record_temp', e.toString());
-              props.return.navigate('TemperatureResultScreen');
+              // props.return.navigate('TemperatureResultScreen');
             }
           }
         }
@@ -146,7 +149,7 @@ export default function SaveButton(props: any) {
               ToastAndroid.SHORT,
               ToastAndroid.CENTER,
             );
-            props.setloader(false);
+            // props.setloader(false);
             setloader(false);
           } else {
             let userID = await get_async_data('user_id');
@@ -164,14 +167,36 @@ export default function SaveButton(props: any) {
             };
             let response = await add_report(data);
             if (response) {
-              props.setloader(false);
+              // props.setloader(false);
               setloader(false);
+              props.setsave(true);
               let e = props.temperature + props.tempunit;
               await set_async_data('record_temp', e.toString());
-              props.return.navigate('TemperatureResultScreen');
+              // props.return.navigate('TemperatureResultScreen');
             }
           }
         }
+      }
+    }
+    if (props.screenname == 'Bmi') {
+      // props.setloader(true);
+      let userID = await get_async_data('user_id');
+      let data = {
+        user_id: userID,
+        report_type: REPORT_TYPES.bmi,
+        sugar_concentration: '',
+        sugar_check: '',
+        note: '',
+        status: props.pressurelevel,
+        bmi: props.bmi,
+        datetime: moment().format('YYYY-MM-DD HH:mm:ss'),
+      };
+      let response = await add_report(data);
+      if (response) {
+        props.setsave(true);
+        await set_async_data('record_entry', 'record_entered');
+        await set_async_data('record_bmi', props.bmi.toString());
+        setloader(false);
       }
     }
   };

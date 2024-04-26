@@ -16,7 +16,7 @@ import {lang} from '../../../global';
 import analytics from '@react-native-firebase/analytics';
 import moment from 'moment';
 import {addFormStyle} from '../../Helper/StyleHelper';
-import {Banner, INTERSITIAL_AD_ID_OLD} from '../../Helper/AdManager';
+import {Banner, INTERSITIAL_AD_ID} from '../../Helper/AdManager';
 import LoadingAnimation from '../../components/LoadingAnimation';
 import SaveButton from '../../components/SaveButton';
 import DisplayAd from '../../components/DisplayAd';
@@ -50,12 +50,13 @@ const AdTemperature = ({navigation}: {navigation: any}) => {
   const [time, setTime] = useState(new Date());
   const [timePicker, setTimePicker] = useState(false);
   const [message, setmessage] = useState('Normal');
-  const [loader, setloader] = useState(false);
+  // const [loader, setloader] = useState(false);
   const [disablesavebtn, setdisablesavebtn] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [unit, setunit] = useState('°F');
   const [chartPercentage, setchartPercentage] = useState(26);
+  const [save, setsave] = useState(false);
   const today = moment(new Date()).format('YYYY-MM-DD');
   useEffect(() => {
     (async () => {
@@ -149,9 +150,20 @@ const AdTemperature = ({navigation}: {navigation: any}) => {
       }
     }
   };
+
   const _continue = async () => {
-    setcloseloader(false);
-    navigation.navigate('HomeScreen', {tab: 'home'});
+    try {
+      setcloseloader(false);
+      if(save == true) {
+        setsave(false);
+        navigation.navigate('TemperatureResultScreen');
+      } else{
+        navigation.navigate('HomeScreen', {tab: 'home'});
+      }
+    } catch(e) {
+      console.log('catch error', e);
+      return ;
+    }
   };
   return (
     <>
@@ -292,15 +304,16 @@ const AdTemperature = ({navigation}: {navigation: any}) => {
           tempunit={unit}
           today={today}
           time={time}
-          setloader={setloader}
+          // setloader={setloader}
           disablesavebtn={disablesavebtn}
           langstr={langstr}
+          setsave={setsave}
           status={message}
         />
       </View>
       <Banner />
-      {loader && <LoadingAnimation iconType={'tick'} />}
-      {closeloader && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID_OLD}/>)}
+      {/* {loader && <LoadingAnimation iconType={'tick'} />} */}
+      {closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
     </>
   );
 };

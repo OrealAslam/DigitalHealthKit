@@ -5,17 +5,24 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
-  Dimensions,BackHandler
+  Dimensions,
+  BackHandler,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import LoadingAnimation from '../../components/LoadingAnimation';
 import BMIPicker from './components/BMIPicker';
-import { Banner, INTERSITIAL_AD_ID_OLD } from '../../Helper/AdManager';
-import {add_bmi_report, get_async_data, set_async_data} from '../../Helper/AppHelper';
+import {Banner, INTERSITIAL_AD_ID} from '../../Helper/AdManager';
+import {
+  // add_bmi_report,
+  get_async_data,
+  set_async_data,
+} from '../../Helper/AppHelper';
 import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
-import { lang } from '../../../global';
+import {lang} from '../../../global';
 import DisplayAd from '../../components/DisplayAd';
+import SaveButton from '../../components/SaveButton';
 
 const {width} = Dimensions.get('window');
 const ITEM_WIDTH = width / 2 - 30;
@@ -33,6 +40,7 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
   const [chartPercentage, setchartPercentage] = useState(35);
   const [bmi, setbmi] = useState(23.66);
   const [closeloader, setcloseloader] = useState(false);
+  const [save, setsave] = useState(false);
   const [language, setlanguage] = useState({
     dashobard: {bmi: ''},
     main: {
@@ -101,25 +109,6 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
     calculateBMI(weight, height);
   }, [weight, height]);
 
-  const saveBmiRecord = async () => {
-    setloader(true);
-    let userID = await get_async_data('user_id');
-    let data = {
-      user_id: userID,
-      report_type: 'bmi',
-      sugar_concentration: '',
-      sugar_check: '',
-      note: '',
-      status: pressurelevel,
-      bmi: bmi.toFixed(3),
-      datetime: moment().format('YYYY-MM-DD HH:mm:ss'),
-    };
-    await add_bmi_report(data);
-    await set_async_data('record_bmi', bmi.toFixed(2) + ' '+pressurelevel);
-    setloader(false);
-    navigation.navigate('BmiResultScreen');
-  };
-
   const backAction = () => {
     navigation.navigate('HomeScreen');
     return true;
@@ -152,9 +141,20 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
       tab: 'home',
     });
   };
+
   const _continue = async () => {
-    setcloseloader(false);
-    navigation.navigate('HomeScreen', {tab: 'home'});
+    try {
+      setcloseloader(false);
+      if (save == true) {
+        setsave(false);
+        navigation.navigate('BmiResultScreen');
+      } else {
+        navigation.navigate('HomeScreen', {tab: 'home'});
+      }
+    } catch (e) {
+      console.log('catch error', e);
+      return;
+    }
   };
 
   return (
@@ -163,8 +163,8 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
         <View style={styles.header}>
           <View style={styles.col}>
             <TouchableOpacity
-              style={{paddingHorizontal: 20,paddingVertical: 25}}
-              onPress={()=>setcloseloader(true)}
+              style={{paddingHorizontal: 20, paddingVertical: 25}}
+              onPress={() => setcloseloader(true)}
               accessibilityLabel="Back">
               <Image
                 style={{width: 14, height: 14}}
@@ -183,9 +183,14 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
                   ? require('../../assets/images/dashboard_icons/maleselected.png')
                   : require('../../assets/images/dashboard_icons/maleunselected.png')
               }
-              style={styles.card}
-            >
-              <Text style={[styles.cardText, card == 'male' ? {color: '#fff'}:{color: '#2E2E2E'}]}>{langstr.main.male}</Text>
+              style={styles.card}>
+              <Text
+                style={[
+                  styles.cardText,
+                  card == 'male' ? {color: '#fff'} : {color: '#2E2E2E'},
+                ]}>
+                {langstr.main.male}
+              </Text>
             </ImageBackground>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setcard('female')}>
@@ -195,14 +200,23 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
                   ? require('../../assets/images/dashboard_icons/femaleselected.png')
                   : require('../../assets/images/dashboard_icons/femaleunselected.png')
               }
-              style={styles.card}
-            >
-              <Text style={[styles.cardText, card == 'female' ? {color: '#fff'}:{color: '#2E2E2E'}]}>{langstr.main.female}</Text>
+              style={styles.card}>
+              <Text
+                style={[
+                  styles.cardText,
+                  card == 'female' ? {color: '#fff'} : {color: '#2E2E2E'},
+                ]}>
+                {langstr.main.female}
+              </Text>
             </ImageBackground>
           </TouchableOpacity>
         </View>
 
-        <BMIPicker setweight={setweight} setheight={setheight} langstr={langstr} />
+        <BMIPicker
+          setweight={setweight}
+          setheight={setheight}
+          langstr={langstr}
+        />
 
         <View style={{marginVertical: 30}}>
           <Text style={styles.pressurelevel}>{pressurelevel}</Text>
@@ -215,14 +229,30 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
             source={require('../../assets/images/polygon.png')}
           />
         </View>
-
-        <TouchableOpacity onPress={saveBmiRecord} style={styles.btn}>
-          <Text style={styles.btnText}>{langstr.main.calculatebmi}</Text>
-        </TouchableOpacity>
+        {loader == true ? (
+          <ActivityIndicator
+            size={`small`}
+            color={`#000000`}
+            style={{marginTop: 40}}
+          />
+        ) : (
+          <SaveButton
+            return={navigation}
+            screenname={'Bmi'}
+            setsave={setsave}
+            langstr={langstr}
+            pressurelevel={pressurelevel}
+            bmi={bmi.toFixed(3)}
+          />
+        )}
       </View>
       <Banner />
-      {loader && <LoadingAnimation iconType={'tick'} />}
-      {closeloader && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID_OLD}/>)}
+      {/* {loader && <LoadingAnimation iconType={'tick'} />} */}
+      {closeloader == true || save == true ? (
+        <DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID} />
+      ) : (
+        <></>
+      )}
     </>
   );
 };
@@ -256,11 +286,11 @@ const styles = StyleSheet.create({
     height: 492 * RATIO,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   cardText: {
     fontSize: 14,
-    fontWeight: '400'
+    fontWeight: '400',
   },
   btn: {
     width: width * 0.88,
@@ -269,7 +299,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#5F45FE',
     alignSelf: 'center',
     borderRadius: 6,
-    marginTop: 'auto'
+    marginTop: 'auto',
   },
   btnText: {
     color: '#fff',

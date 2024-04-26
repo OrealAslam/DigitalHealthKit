@@ -43,7 +43,7 @@ const NotesPopup = (props: any) => {
     });
     return output;
   };
-  
+
   return (
     <View style={styles.overlayContainer}>
       <View style={styles.container}>
@@ -57,7 +57,112 @@ const NotesPopup = (props: any) => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.mainArea}>{displayButons()}</View>
+        <View style={styles.mainArea}>
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'After Meal' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('After Meal')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'After Meal' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.AfterMeal}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Before Meal' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Before Meal')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Before Meal' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.BeforeMeal}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Medication' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Medication')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Medication' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.medication}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Sitting' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Sitting')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Sitting' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.Sitting}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Peroid' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Peroid')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Peroid' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.Peroid}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Walking' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Walking')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Walking' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.Walking}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              selectedopt == 'Lying' ? {backgroundColor: '#5F45FE'} : {},
+            ]}
+            onPress={() => setselectedopt('Lying')}>
+            <Text
+              style={[
+                styles.btnText,
+                selectedopt == 'Lying' ? {color: '#fff'} : {},
+              ]}>
+              {props.langstr.options.Lying}
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.buttonContainer}>
           <TouchableOpacity

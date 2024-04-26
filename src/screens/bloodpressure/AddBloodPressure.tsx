@@ -13,12 +13,12 @@ import {
 } from 'react-native';
 import analytics from '@react-native-firebase/analytics';
 import {addFormStyle} from '../../Helper/StyleHelper';
-import {Banner, INTERSITIAL_AD_ID_OLD} from '../../Helper/AdManager';
+import {Banner, INTERSITIAL_AD_ID} from '../../Helper/AdManager';
 import DateTimeComponent from '../../components/DateTimeComponent';
 import SaveButton from '../../components/SaveButton';
 import SystolicComponent from './components/SystolicComponent';
 import PageHeader from './components/PageHeader';
-import LoadingAnimation from '../../components/LoadingAnimation';
+// import LoadingAnimation from '../../components/LoadingAnimation';
 import NotesPopup from './components/NotesPopup';
 import {useIsFocused} from '@react-navigation/native';
 import {lang} from '../../../global';
@@ -44,8 +44,9 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
   const [pressurelevel, setpressurelevel] = useState('Normal');
   const [note, setnote] = useState('');
   const [showremarksmodal, setshowremarksmodal] = useState(false);
-  const [loader, setloader] = useState(false);
+  // const [loader, setloader] = useState(false);
   const [closeloader, setcloseloader] = useState(false);
+  const [save, setsave] = useState(false);
   const [language, setlanguage] = useState({
     dashobard: {bp: ''},
     main: {
@@ -178,7 +179,12 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
   const _continue = async () => {
     try {
       setcloseloader(false);
-      navigation.navigate('HomeScreen', {tab: 'home'});
+      if(save == true) {
+        setsave(false);
+        navigation.navigate('ResultPageScreen');
+      } else{
+        navigation.navigate('HomeScreen', {tab: 'home'});
+      }
     } catch(e) {
       console.log('catch error', e);
       return ;
@@ -268,13 +274,14 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
           today={today}
           time={time}
           note={note}
-          setloader={setloader}
           pressurelevel={pressurelevel}
+          // setloader={setloader}
+          setsave={setsave}
           langstr={langstr}
         />
       </View>
       <Banner />
-      {loader && <LoadingAnimation iconType={'tick'} />}
+      {/* {loader && <LoadingAnimation iconType={'tick'} />} */}
 
       {showremarksmodal && (
         <NotesPopup
@@ -284,7 +291,7 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
         />
       )}
 
-    {closeloader && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID_OLD}/>)}
+    {closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
     </>
   );
 }

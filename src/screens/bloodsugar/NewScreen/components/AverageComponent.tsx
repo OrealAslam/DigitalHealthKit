@@ -9,7 +9,6 @@ import React from 'react';
 const {width} = Dimensions.get('window');
 
 const AverageComponent = (props: any) => {
-
   const options = () => {
     let data = ['After meal', 'Before meal', 'After sleep', 'Fasting', 'Other'];
     let record = data.map((item, index) => {
@@ -41,7 +40,107 @@ const AverageComponent = (props: any) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.box}>{options()}</View>
+      <View style={styles.box}>
+        <TouchableOpacity
+          style={[
+            styles.btn,
+            props.selected === 'After meal'
+              ? {backgroundColor: '#5F45FE'}
+              : {backgroundColor: '#F4F5F6'},
+          ]}
+          onPress={() => {
+            props.setselected('After meal');
+            props.setaveragemodal(false);
+          }}>
+          <Text
+            style={[
+              styles.btntxt,
+              props.selected === 'After meal' ? {color: '#fff'} : {color: '#000'},
+            ]}>
+            After meal
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.btn,
+            props.selected === 'Before meal'
+              ? {backgroundColor: '#5F45FE'}
+              : {backgroundColor: '#F4F5F6'},
+          ]}
+          onPress={() => {
+            props.setselected('Before meal');
+            props.setaveragemodal(false);
+          }}>
+          <Text
+            style={[
+              styles.btntxt,
+              props.selected === 'Before meal' ? {color: '#fff'} : {color: '#000'},
+            ]}>
+            Before meal
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.btn,
+            props.selected === 'After sleep'
+              ? {backgroundColor: '#5F45FE'}
+              : {backgroundColor: '#F4F5F6'},
+          ]}
+          onPress={() => {
+            props.setselected('After sleep');
+            props.setaveragemodal(false);
+          }}>
+          <Text
+            style={[
+              styles.btntxt,
+              props.selected === 'After sleep' ? {color: '#fff'} : {color: '#000'},
+            ]}>
+            After sleep
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.btn,
+            props.selected === 'Fasting'
+              ? {backgroundColor: '#5F45FE'}
+              : {backgroundColor: '#F4F5F6'},
+          ]}
+          onPress={() => {
+            props.setselected('Fasting');
+            props.setaveragemodal(false);
+          }}>
+          <Text
+            style={[
+              styles.btntxt,
+              props.selected === 'Fasting' ? {color: '#fff'} : {color: '#000'},
+            ]}>
+            Fasting
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.btn,
+            props.selected === 'Other'
+              ? {backgroundColor: '#5F45FE'}
+              : {backgroundColor: '#F4F5F6'},
+          ]}
+          onPress={() => {
+            props.setselected('Other');
+            props.setaveragemodal(false);
+          }}>
+          <Text
+            style={[
+              styles.btntxt,
+              props.selected === 'Other' ? {color: '#fff'} : {color: '#000'},
+            ]}>
+            Fasting
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

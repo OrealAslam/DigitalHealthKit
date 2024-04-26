@@ -184,18 +184,18 @@ export const add_report = async (postData: any) => {
   let res = await resposne.json();
   return res;
 };
-export const add_bmi_report = async (postData: any) => {
-  const resposne = await fetch(ADD_REPORT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-    },
-    body: JSON.stringify(postData),
-  });
-  let res = await resposne.json();
-  return res;
-};
+// export const add_bmi_report = async (postData: any) => {
+//   const resposne = await fetch(ADD_REPORT, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'X-Requested-With': 'XMLHttpRequest',
+//     },
+//     body: JSON.stringify(postData),
+//   });
+//   let res = await resposne.json();
+//   return res;
+// };
 export const delete_report = async (id: any) => {
   const resposne = await fetch(DELETE_REPORT, {
     method: 'POST',

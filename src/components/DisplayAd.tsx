@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {View, Dimensions, Text} from 'react-native';
 import InterstitialFlooring from '../Helper/InterstitialFlooring';
 import ZoomAnimation from './ZoomAnimation';
-import {INTERSITIAL_AD_ID} from '../Helper/AdManager';
 import analytics from '@react-native-firebase/analytics';
 
 const {width} = Dimensions.get('window');
@@ -22,9 +21,7 @@ const DisplayAd = (props: any) => {
         await analytics().logEvent('interstitial_ad');
         props._continue();
       }
-
       setadId(props.adId);
-      // setadId(INTERSITIAL_AD_ID);
     })();
   }, [adLoadStatus]);
 
