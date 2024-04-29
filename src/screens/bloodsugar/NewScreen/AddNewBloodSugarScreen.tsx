@@ -89,7 +89,7 @@ const AddNewBloodSugarScreen = ({navigation}: {navigation: any}) => {
           <Text style={styles.cardTitle}>Recent</Text>
           <View style={styles.cardrow}>
             <Text style={styles.cardedesc}>
-              {recent != null ? recent?.sugar_concentration : 'Null'}
+              {recent ? recent?.sugar_concentration : '0'}
             </Text>
             <Text style={styles.unit}>mgd/L</Text>
           </View>
@@ -98,7 +98,7 @@ const AddNewBloodSugarScreen = ({navigation}: {navigation: any}) => {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Average</Text>
           <View style={styles.cardrow}>
-            <Text style={styles.cardedesc}>{average != null ? average : 'Null'}</Text>
+            <Text style={styles.cardedesc}>{average ? average : '0'}</Text>
             <Text style={styles.unit}>mgd/L</Text>
           </View>
         </View>

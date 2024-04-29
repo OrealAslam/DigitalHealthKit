@@ -9,7 +9,6 @@ import {useAppOpenAd} from 'react-native-google-mobile-ads';
 import {APPOPEN_AD_ID} from './src/Helper/AdManager';
 import {View} from 'react-native';
 import {lang} from './global';
-// import notifee, {EventType, AndroidImportance} from '@notifee/react-native';
 
 const App = () => {
   const [firstTime, setfirstTime] = useState(true);
@@ -63,7 +62,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      // crashlytics().log('App crashes');
+      crashlytics().log('App crashes');
       let onboard = await get_async_data('on_board');
       let rate = await get_async_data('alreadyrate');
       if (rate && rate == 'rated') {

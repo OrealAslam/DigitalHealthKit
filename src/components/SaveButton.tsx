@@ -66,6 +66,7 @@ export default function SaveButton(props: any) {
           let saveData = sys + `/` + dis;
           props.setsave(true);
           await set_async_data('record_bp', saveData.toString());
+          setloader(false);
           // props.setloader(false);
           // props.return.navigate('ResultPageScreen');
         } else {
