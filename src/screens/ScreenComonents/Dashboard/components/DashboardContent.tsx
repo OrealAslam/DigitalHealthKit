@@ -11,6 +11,7 @@ import React, {useEffect, useState} from 'react';
 
 import {get_async_data} from '../../../../Helper/AppHelper';
 import {lang} from '../../../../../global';
+import { NativeAd100 } from '../../../../Helper/NativeAd100';
 
 const {width} = Dimensions.get('window');
 
@@ -75,7 +76,9 @@ const DashboardContent = (props: any) => {
     <View style={styles.dashboardCardContainer}>
       {/* <View style={{backgroundColor: '#fff'}}>
       </View> */}
-      <TouchableOpacity activeOpacity={0.9} onPress={() => props.navigate('AddBloodSugar')}>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => props.navigate('AddBloodSugar')}>
         <ImageBackground
           style={styles.dashboardCard}
           source={require('../../../../assets/images/dashboard_icons_new/bloodsugar_new.png')}>
@@ -87,12 +90,14 @@ const DashboardContent = (props: any) => {
             {cardtitletwo}
           </Text>
           <Text style={styles.result}>
-              {recentbs != null ? recentbs + '  mmol/L' : add}
-            </Text>
+            {recentbs != null ? recentbs + '  mmol/L' : add}
+          </Text>
         </ImageBackground>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={0.9} onPress={() => props.navigate('AddBloodPressure')}>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => props.navigate('AddBloodPressure')}>
         <ImageBackground
           style={styles.dashboardCard}
           source={require('../../../../assets/images/dashboard_icons_new/bloodpressure_new.png')}>
@@ -104,40 +109,49 @@ const DashboardContent = (props: any) => {
             {cardtitleone}
           </Text>
           <Text style={styles.result}>
-              {recentbp != null ? recentbp + '  mmHg' : add}
-            </Text>
+            {recentbp != null ? recentbp + '  mmHg' : add}
+          </Text>
         </ImageBackground>
       </TouchableOpacity>
 
+      <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+        <NativeAd100 />
+      </View>
+
       <View style={styles.multipleCardContainer}>
-        <TouchableOpacity activeOpacity={0.9} onPress={() => props.navigate('BmiScreen')}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          onPress={() => props.navigate('BmiScreen')}>
           <ImageBackground
             style={styles.colCard}
             source={require('../../../../assets/images/dashboard_icons_new/bmi.png')}>
             <Text
-            style={[
-              styles.cardtitle,
-              {fontSize: 18, top: '8%', left: '11%', fontWeight: '700'},
-            ]}>
-            {cardtitlefour}
-          </Text>
+              style={[
+                styles.cardtitle,
+                {fontSize: 18, top: '8%', left: '11%', fontWeight: '700'},
+              ]}>
+              {cardtitlefour}
+            </Text>
             <Text style={styles.result}>
-            {recentbmi != null ? recentbmi.split(' ')[0] : add}
+              {recentbmi != null ? recentbmi.split(' ')[0] : add}
             </Text>
           </ImageBackground>
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.9} onPress={() => props.navigate('AdTemperature')}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          onPress={() => props.navigate('AdTemperature')}>
           <ImageBackground
             style={styles.colCard}
             source={require('../../../../assets/images/dashboard_icons_new/temerature.png')}>
             <Text
-            style={[
-              styles.cardtitle,
-              {fontSize: 18, top: '8%', left: '11%', fontWeight: '700'},
-            ]}>{cardtitlethree}</Text>
+              style={[
+                styles.cardtitle,
+                {fontSize: 18, top: '8%', left: '11%', fontWeight: '700'},
+              ]}>
+              {cardtitlethree}
+            </Text>
             <Text style={styles.result}>
-              {/* 30*C  */}
               {recenttemp != null ? recenttemp : 'Add Record'}
             </Text>
           </ImageBackground>
@@ -158,7 +172,6 @@ const styles = StyleSheet.create({
   nativeContainer: {
     width: width * 0.88,
     alignSelf: 'center',
-    marginBottom: 10,
   },
   multipleCardContainer: {
     width: width * 0.88,
@@ -166,7 +179,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 13,
-    marginTop: 0,
+    marginTop: 11,
   },
   colCard: {
     width: colCardWidth,

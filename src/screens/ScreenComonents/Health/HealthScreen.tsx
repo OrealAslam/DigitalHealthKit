@@ -16,6 +16,9 @@ import {data} from '../../../../globalData';
 import analytics from '@react-native-firebase/analytics';
 import {useRoute} from '@react-navigation/native';
 import {lang} from '../../../../global';
+import { get_async_data, set_async_data } from '../../../Helper/AppHelper';
+import DisplayAd from '../../../components/DisplayAd';
+import { INTERSITIAL_AD_ID } from '../../../Helper/AdManager';
 
 const ITEM_WIDTH = width / 4 - 10;
 const ITEM_RATIO = ITEM_WIDTH / 1440;
@@ -26,6 +29,7 @@ const HealthScreen = (props: any) => {
   const [selectedmenu, setselectedmenu] = useState('health');
   const [cards, setcards] = useState(<></>);
   const [quit, setquit] = useState(false);
+  // const [showad, setshowad] = useState(false);
   const [language, setlanguage] = useState({
     main: {healthTitle: ''},
     article: {
@@ -109,12 +113,49 @@ const HealthScreen = (props: any) => {
     setcards(card);
   };
 
-  const navigateToDetail = (id: any) => {
+  const navigateToDetail = async (id: any) => {
+    // sho ad after 4th click 
+    // await checkforad();
+    // await incrementclickcount();
+    // await incrementclickcount();
     props.navigation.navigate('DetailScreen', {
       quesNo: id,
       category: category,
     });
   };
+
+  // const incrementclickcount = async () => {
+  //   let click = await get_async_data('clicks');
+  //   console.log('total clicks', click);
+  //   if(click != null || click != undefined) {
+  //     let x = parseInt(click);
+  //     console.log(typeof(click))
+  //     x = x + 1;
+  //     await set_async_data('clicks', x);
+  //   } else {
+  //     let x = parseInt(click);
+  //     x = x + 1;
+  //     await set_async_data('clicks', x);
+  //   }
+  // }
+
+  // const checkforad = async () => {
+  //   let val = await get_async_data('clicks');
+  //   console.log('haha', val);
+  //   if(val != null || val != undefined) {
+  //     // val = parseInt(val);
+  //     let x = parseInt(val);
+  //     if(x%4 == 0) {
+  //       console.log('show', val);
+  //       setshowad(true);
+  //     } else {
+  //       console.log('not show ad', val);
+  //       setshowad(false);
+  //     }
+  //   } else {
+  //     await set_async_data('clicks', '1');
+  //   }
+  // }
 
   return (
     <>
@@ -137,6 +178,8 @@ const HealthScreen = (props: any) => {
           {cards}
         </ScrollView>
       </View>
+
+    {/* {showad == true ? (<DisplayAd _continue={()=>{setshowad(false)}} adId={INTERSITIAL_AD_ID}/>) : (<></>)} */}
     </>
   );
 };

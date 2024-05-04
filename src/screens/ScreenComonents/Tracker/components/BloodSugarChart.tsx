@@ -205,7 +205,7 @@ const BloodSugarChart = (props: any) => {
 const styles = StyleSheet.create({
   adImage: {
     width: adImgWidth,
-    height: 848 * adImgRatio,
+    height: 896 * adImgRatio,
     alignSelf: 'center',
     marginVertical: 20,
     justifyContent: 'space-between',

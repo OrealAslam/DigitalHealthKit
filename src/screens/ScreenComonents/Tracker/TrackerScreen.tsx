@@ -99,7 +99,7 @@ const TrackerScreen = (props: any) => {
             />
           </View>
 
-          <View style={styles.nativeContainer}>
+          <View style={[styles.nativeContainer, {marginLeft: 10}]}>
             <NativeAd150 />
           </View>
 
@@ -121,7 +121,7 @@ const TrackerScreen = (props: any) => {
             />
           </View>
 
-          <View style={[styles.nativeContainer, {marginTop: 15}]}>
+          <View style={[styles.nativeContainer, {marginLeft: 10}]}>
             <NativeAd150 />
           </View>
 
@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
   nativeContainer: {
     width: width * 0.88,
     alignSelf: 'center',
-    marginBottom: 10,
   },
   header: {
     flexDirection: 'row',
@@ -189,9 +188,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   head: {
+    width: '93%',
+    alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 15,
+    marginTop: 15,
   },
   icon: {
     width: 17,

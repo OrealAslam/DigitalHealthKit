@@ -11,6 +11,8 @@ import {
 import React, {useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 import {addUser, get_async_data, set_async_data} from '../Helper/AppHelper';
+import { INTERSITIAL_AD_ID } from '../Helper/AdManager';
+import DisplayAd from '../components/DisplayAd';
 
 const {width, height} = Dimensions.get('screen');
 const btnWidth = width - 60;
@@ -33,10 +35,10 @@ const DesclaimerScreen = ({navigation}: {navigation: any}) => {
     }
   };
 
-  const createUser = async () => {
-    setloader(true);
+  const _continue = async () => {
     await newUser();
     await set_async_data('on_board', 'onboard');
+    setloader(false);
     navigation.navigate('MainRoute');
   };
 
@@ -60,7 +62,7 @@ const DesclaimerScreen = ({navigation}: {navigation: any}) => {
             style={{alignSelf: 'center', top: 15}}
           />
         ) : (
-          <TouchableOpacity onPress={createUser} style={styles.btn}>
+          <TouchableOpacity onPress={()=>{setloader(true)}} style={styles.btn}>
             <Text style={styles.text}>
               {route.params?.lang.boarding.letsgo}
             </Text>
@@ -68,6 +70,8 @@ const DesclaimerScreen = ({navigation}: {navigation: any}) => {
         )}
         </View>
       </ImageBackground>
+
+      {loader && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>)}
     </SafeAreaView>
   );
 };

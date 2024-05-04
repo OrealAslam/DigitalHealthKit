@@ -10,6 +10,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {lang} from '../../global';
 import {useIsFocused} from '@react-navigation/native';
+import { NativeAd100 } from '../Helper/NativeAd100';
 const {width} = Dimensions.get('window');
 
 const cardWidth = width - 50;
@@ -32,14 +33,14 @@ const Recomandations = (props: any) => {
   });
 
   const myFunction = (screen: any) => {
-    try{ 
+    try {
       if (screen != '') {
         props.navigateScreen(screen, 'health');
       } else {
         props.setselectedmenu('health');
       }
-    } catch(e) {
-      return ;
+    } catch (e) {
+      return;
     }
   };
 
@@ -80,16 +81,20 @@ const Recomandations = (props: any) => {
             style={styles.articleCard}
             source={require('../assets/images/article_images/bloodglucose.png')}>
             <Text style={[styles.title, {maxWidth: '60%'}]}>
-            {str.recommended.BloodGlucose}
+              {str.recommended.BloodGlucose}
             </Text>
           </ImageBackground>
         </TouchableOpacity>
+
+        <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+          <NativeAd100 />
+        </View>
         <TouchableOpacity onPress={() => myFunction(props.putScreen)}>
           <ImageBackground
             style={styles.articleCard}
             source={require('../assets/images/article_images/heart_disease_type.png')}>
             <Text style={[styles.title, {maxWidth: '60%'}]}>
-            {str.recommended.heartDiseaseTypes}
+              {str.recommended.heartDiseaseTypes}
             </Text>
           </ImageBackground>
         </TouchableOpacity>
@@ -137,7 +142,8 @@ const styles = StyleSheet.create({
   articleContainer: {
     width: width,
     flexDirection: 'column',
-    paddingBottom: 30
+    paddingBottom: 30,
+    // backgroundColor: 'yellow'
   },
   articleCard: {
     width: cardWidth,
@@ -146,6 +152,10 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  nativeContainer: {
+    width: width * 0.88,
+    alignSelf: 'center',
   },
 });
 
