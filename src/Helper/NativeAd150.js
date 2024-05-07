@@ -21,18 +21,18 @@ export const NativeAd150 = React.memo(() => {
   const [visible, setvisible] = useState(false);
 
   useEffect(() => {
-    // const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
-    //   setVisible(true);
-    // });
+    const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
+      setVisible(true);
+    });
 
     setTimeout(() => {
       setvisible(true);
     }, 3000);
 
     // Clean up event listener when component unmounts
-    // return () => {
-    //   adLoadedListener();
-    // };
+    return () => {
+      adLoadedListener();
+    };
   }, []);
 
   useEffect(() => {
