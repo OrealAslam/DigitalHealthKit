@@ -9,6 +9,8 @@ import SugarResultScreen from '../screens/bloodsugar/SugarResultScreen';
 import AddBloodPressure from '../screens/bloodpressure/AddBloodPressure';
 import AddNewBloodPressureScreen from '../screens/bloodpressure/NewScreen/AddNewBloodPressureScreen';
 import AddNewBloodSugarScreen from '../screens/bloodsugar/NewScreen/AddNewBloodSugarScreen';
+import SugarBridgeScreen from '../screens/bloodsugar/SugarBridgeScreen';
+import BpBridgeScreen from '../screens/bloodpressure/BpBridgeScreen';
 import ResultPageScreen from '../screens/bloodpressure/ResultPageScreen';
 import ChangeLanguageScreen from '../screens/ChangeLanguageScreen';
 import DisclaimerScreen from '../screens/DisclaimerScreen';
@@ -46,6 +48,11 @@ export default function MainRoute(props) {
         name="AddBloodSugar"
         component={AddBloodSugar}
         options={{headerShown: false, animationenabled: false}}
+      /> 
+      <Stack.Screen
+        name="SugarBridgeScreen"
+        component={SugarBridgeScreen}
+        options={{headerShown: false, animationenabled: false}}
       />
       <Stack.Screen
         name="SugarResultScreen"
@@ -55,6 +62,11 @@ export default function MainRoute(props) {
       <Stack.Screen
         name="AddBloodPressure"
         component={AddBloodPressure}
+        options={{headerShown: false, animationenabled: false}}
+      />
+      <Stack.Screen
+        name="BpBridgeScreen"
+        component={BpBridgeScreen}
         options={{headerShown: false, animationenabled: false}}
       />
       <Stack.Screen

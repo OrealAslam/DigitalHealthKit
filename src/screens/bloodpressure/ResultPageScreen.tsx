@@ -17,8 +17,8 @@ import {NativeAd150} from '../../Helper/NativeAd150';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
-import DisplayAd from '../../components/DisplayAd';
-import { INTERSITIAL_AD_ID } from '../../Helper/AdManager';
+import { REWARED_AD_ID } from '../../Helper/AdManager';
+import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 
 const {width} = Dimensions.get('window');
 const itemWidth = width - 80;
@@ -30,6 +30,7 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
   const [data, setdata] = useState(['', '']);
   const [loader, setloader] = useState(false);
   const [unlockadtype, setunlockadtype] = useState('');
+  const [back, setback] = useState(false);
   const [language, setlanguage] = useState({
     dashobard: {bp: '', bprestitle: '', recommended: ''},
     main: {add: '', unlock: ''},
@@ -58,7 +59,8 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
   });
 
   const backAction = () => {
-    return navigation.navigate('HomeScreen', {tab: 'tracker'});
+    setback(true);
+    return true;
   };
 
   const backHandler = BackHandler.addEventListener(
@@ -128,13 +130,20 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
 
   const navigateScreen = (screenName: any) => {
     navigation.navigate(screenName, {
-      tab: 'health',
+      tab: 'insight',
     });
   };
+
   const _continue = async () => {
     setloader(false);
-    navigation.navigate('ResultPageScreen');
+    if(back == true) {
+      setback(false);
+      navigation.navigate('HomeScreen', {tab: 'home'})
+    } else {
+      navigation.navigate('ResultPageScreen');
+    }
   };
+
   const showAd = async (type: any) => {
     setloader(true);
     if (type == 'line') {
@@ -229,8 +238,7 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-
-      {loader && <DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID} />}
+      {loader &&  (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
     </>
   );
 };

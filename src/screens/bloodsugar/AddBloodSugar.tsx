@@ -114,7 +114,8 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
   });
 
   const backAction = () => {
-    navigation.navigate('HomeScreen', {tab: 'home'});
+    setcloseloader(true);
+    // navigation.navigate('HomeScreen', {tab: 'home'});
     return true;
   };
 
@@ -379,7 +380,7 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
         />
       )}
 
-{closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
+      {closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
     </>
   );
 }

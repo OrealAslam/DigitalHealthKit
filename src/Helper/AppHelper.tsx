@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 export const APPID = 3; // TEST APPID=3, LIVE APPID=4
 export const AWS_S3_URL = 'https://cvmakeruserimages.s3.amazonaws.com/blogs/';
+export const API_KEY = '98b51cbe28734a39b7e104101241005';
 export const BASE_URL = 'https://mrlapps.care20.com/api/sugar_app/'; // live server
 // export const BASE_URL = 'http://192.168.10.43/MRL-Apps/MRL-Apps/public/api/sugar_app/'; // local server
 
@@ -23,6 +24,18 @@ export const BOOKMARK = BASE_URL + 'bookmark';
 export const FILTER_REPORT = BASE_URL + 'get-filter-report';
 export const NOTIFY = BASE_URL + 'notify';
 const BARCODE_API_URL = 'https://world.openfoodfacts.net/api/v2/product/';
+
+// export const weather_data = async () => {
+//   const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}&units=metric`, {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'X-Requested-With': 'XMLHttpRequest',
+//     },
+//   });
+//   const response = await request.json();
+//   return response;
+// }
 
 export const barcode_api_call = async (code: any) => {
   let obj = {code: code};
@@ -88,6 +101,7 @@ export const get_async_data = async (name: any) => {
     return false;
   }
 };
+
 export const generateFCM = async () => {
   await messaging().registerDeviceForRemoteMessages();
   const token = await messaging().getToken();
@@ -417,6 +431,18 @@ export const roundNearestAfterDecimal = (num: any) => {
     // If it's not, round the number down
     return Math.floor(num);
   }
+};
+
+export const weather_api_request = async (location:any) => {
+  const resposne = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}&aqi=no`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+  });
+  let res = await resposne.json();
+  return res;
 };
 
 // CUCTOM DATE PICKER HELPER FUNCTIONS

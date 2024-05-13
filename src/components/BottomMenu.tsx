@@ -4,17 +4,18 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  ImageBackground,
+  Image,
+  Text,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import QuitAppModal from './QuitAppModal';
-import { Banner } from '../Helper/AdManager';
+import {Banner} from '../Helper/AdManager';
 const {width} = Dimensions.get('window');
-const MENU_WIDTH = width;
-const MENU_RATIO = MENU_WIDTH / 1500;
+const ICON_WIDTH = width / 5 - 40;
+const ICON_RATIO = ICON_WIDTH / 112;
 
 const BottomMenu = (props: any) => {
-  const [tab, settab] = useState(require('../assets/menu/home.png'));
+  const [tab, settab] = useState('home');
   const [quit, setquit] = useState(false);
   const backAction = () => {
     setquit(true);
@@ -25,65 +26,87 @@ const BottomMenu = (props: any) => {
     backAction,
   );
 
-  useEffect(()=> {
+  useEffect(() => {
     switch (props.selectedmenu) {
       case 'home':
-        settab(require('../assets/menu/home.png'));
+        settab('home');
         break;
       case 'tracker':
-        settab(require('../assets/menu/tracker.png'));
+        settab('tracker');
         break;
-      case 'health':
-        settab(require('../assets/menu/blog.png'));
+      case 'insight':
+        settab('insight');
         break;
-      case 'setting':
-        settab(require('../assets/menu/profile.png'));
+      case 'profile':
+        settab('profile');
         break;
       default:
-        settab(require('../assets/menu/home.png'));
+        settab('home');
     }
-  },[props.selectedmenu]);
+  }, [props.selectedmenu]);
 
   const menu = () => {
     let js = (
-      <ImageBackground style={styles.menu} source={tab}>
+      <View style={styles.menuContainer}>
         <TouchableOpacity
           onPress={() => changeTab('home')}
-          style={styles.column}></TouchableOpacity>
+          style={styles.column}>
+          <Image style={styles.icon} source={tab == 'home' ? require('../assets/menu/home_selected.png') : require('../assets/menu/home_unselected.png')} />
+          <Text style={styles.menuTxt}>Home</Text>
+        </TouchableOpacity>
+        
         <TouchableOpacity
           onPress={() => changeTab('tracker')}
-          style={styles.column}></TouchableOpacity>
+          style={styles.column}>
+          <Image style={styles.icon} source={tab == 'tracker' ? require('../assets/menu/tracker_selected.png') : require('../assets/menu/tracker_unselected.png')} />
+          <Text style={styles.menuTxt}>Tracker</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
-          onPress={() => changeTab('health')}
-          style={styles.column}></TouchableOpacity>
+          onPress={() => changeTab('insight')}
+          style={styles.column}>
+          <Image style={styles.icon} source={tab == 'insight' ? require('../assets/menu/insight_selected.png') : require('../assets/menu/insight_unselected.png')} />
+          <Text style={styles.menuTxt}>Insights</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
-          onPress={() => changeTab('setting')}
-          style={styles.column}></TouchableOpacity>
-      </ImageBackground>
+          onPress={() => changeTab('profile')}
+          style={styles.column}>
+          <Image style={styles.icon} source={tab == 'profile' ? require('../assets/menu/profile_selected.png') : require('../assets/menu/profile_unselected.png')} />
+          <Text style={styles.menuTxt}>Profile</Text>
+        </TouchableOpacity>
+      </View>
     );
     return js;
   };
 
   const changeTab = (tabmenu: any) => {
     if (tabmenu == 'home') {
-      settab(require('../assets/menu/home.png'));
+      settab('home');
     }
     if (tabmenu == 'tracker') {
-      settab(require('../assets/menu/tracker.png'));
+      settab('tracker');
     }
     if (tabmenu == 'health') {
-      settab(require('../assets/menu/blog.png'));
+      settab('insight');
     }
-    if (tabmenu == 'setting') {
-      settab(require('../assets/menu/profile.png'));
+    if (tabmenu == 'profile') {
+      settab('profile');
     }
     props.setselectedmenu(tabmenu);
   };
 
   return (
     <>
-      <View  style={{height: 'auto', width: width, position: 'absolute', bottom: 0,elevation: 5}}>
-        {menu()} 
+      <View
+        style={{
+          height: 'auto',
+          width: width,
+          position: 'absolute',
+          bottom: 0,
+          backgroundColor: '#F4F4FE'
+        }}>
+        {menu()}
         <Banner />
       </View>
       {quit == true ? <QuitAppModal setquit={setquit} /> : <></>}
@@ -92,18 +115,25 @@ const BottomMenu = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-  menu: {
-    width: MENU_WIDTH,
-    height: 325 * MENU_RATIO,
-    display: 'flex',
+  menuContainer: {
+    width: width * 0.85,
+    justifyContent: 'space-between',
+    alignSelf: 'center',
     flexDirection: 'row',
-
+    backgroundColor: '#F4F4FE',
+    paddingTop: 5,
   },
   column: {
-    width: width * 0.25,
-    height: '53%',
-    alignSelf: 'flex-end',
     backgroundColor: 'transparent',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
+  icon: {
+    width: ICON_WIDTH,
+    height: 111 * ICON_RATIO,
+  },
+  menuTxt: {
+    fontSize: 10,
+  }
 });
 export default BottomMenu;

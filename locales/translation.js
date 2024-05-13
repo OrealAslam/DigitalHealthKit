@@ -50,6 +50,7 @@ export const translation = {
       weight: 'Weight',
       height: 'Height',
       calculatebmi: 'Calculate BMI',
+      bridgetext: 'Please add your record to unlock statistical information',
     },
     dashobard: {
       recommended: 'Recommended Reading',
@@ -174,6 +175,7 @@ export const translation = {
       weight: 'Peso',
       height: 'Altura',
       calculatebmi: 'Calcular IMC',
+      bridgetext: 'Por favor, añade tu registro para desbloquear la información estadística.'
     },
     dashobard: {
       recommended: 'Lectura Recomendada',
@@ -181,6 +183,7 @@ export const translation = {
       bs: 'Azúcar en la Sangre',
       bmi: 'IMC',
       heartRate: 'Frecuencia Cardíaca',
+      temperature: 'Temperatura',
       addNow: 'Ahora añadir',
       bprestitle: 'El resultado de tu Nivel de Presión Arterial es',
       bsrestitle: 'El resultado de tu Nivel de Azúcar en la Sangre es',
@@ -299,6 +302,7 @@ export const translation = {
       weight: 'Ağırlık',
       height: 'Boy',
       calculatebmi: 'Vücut Kitle İndeksi Hesapla',
+      bridgetext: 'Lütfen istatistiksel bilgileri açmak için kaydınızı ekleyin.',
     },
     dashobard: {
       recommended: 'Önerilen Okuma',
@@ -306,6 +310,7 @@ export const translation = {
       bs: 'Kan Şekeri',
       bmi: 'Vücut Kitle İndeksi',
       heartRate: 'Kalp Atış Hızı',
+      temperature: 'Sıcaklık',
       addNow: 'Şimdi ekle',
       bprestitle: 'Kan Basıncı Seviyenin Sonucu',
       bsrestitle: 'Kan Şekerinizin Seviyesinin Sonucu',
@@ -424,6 +429,7 @@ export const translation = {
       weight: 'الوزن',
       height: 'الطول',
       calculatebmi: 'حساب مؤشر كتلة الجسم',
+      bridgetext: 'يرجى إضافة سجلك لفتح المعلومات الإحصائية'
     },
     dashobard: {
       recommended: 'القراءة الموصى بها',
@@ -547,6 +553,7 @@ export const translation = {
       weight: 'Gewicht',
       height: 'Höhe',
       calculatebmi: 'BMI berechnen',
+      bridgetext: 'Bitte fügen Sie Ihren Datensatz hinzu, um statistische Informationen freizuschalten.',
     },
     dashobard: {
       recommended: 'Empfohlene Lektüre',
@@ -554,6 +561,7 @@ export const translation = {
       bs: 'Blutzucker',
       bmi: 'BMI',
       heartRate: 'Herzfrequenz',
+      temperature: 'Temperatur',
       addNow: 'Jetzt hinzufügen',
       bprestitle: 'Das Ergebnis Ihres Blutdruckniveaus ist',
       bsrestitle: 'Das Ergebnis Ihres Blutzuckerniveaus ist',
@@ -673,6 +681,7 @@ export const translation = {
       weight: 'Poids',
       height: 'Taille',
       calculatebmi: "Calculer l'IMC",
+      bridgetext: 'Veuillez ajouter votre enregistrement pour débloquer les informations statistiques.'
     },
     dashobard: {
       recommended: 'Lecture recommandée',
@@ -800,6 +809,7 @@ export const translation = {
       weight: 'Peso',
       height: 'Altezza',
       calculatebmi: 'Calcola BMI',
+      bridgetext: 'Per favore, aggiungi il tuo record per sbloccare le informazioni statistiche.'
     },
     dashobard: {
       recommended: 'Lettura Consigliata',
@@ -926,6 +936,7 @@ export const translation = {
       weight: 'Вес',
       height: 'Рост',
       calculatebmi: 'Рассчитать ИМТ',
+      bridgetext: 'Пожалуйста, добавьте свою запись, чтобы разблокировать статистическую информацию.'
     },
     dashobard: {
       recommended: 'Рекомендуемые материалы',
@@ -1052,6 +1063,7 @@ export const translation = {
       weight: '体重',
       height: '身長',
       calculatebmi: 'BMIを計算',
+      bridgetext: '"統計情報を解除するために、レコードを追加してください。" (Tōkei jōhō o kaijo suru tame ni, rekōdo o tsuikashite kudasai.)'
     },
     dashobard: {
       recommended: 'おすすめの読み物',

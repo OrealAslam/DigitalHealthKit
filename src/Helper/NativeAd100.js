@@ -28,18 +28,18 @@ export const NativeAd100 = React.memo(() => {
   const [visible, setvisible] = useState(false);
 
   useEffect(() => {
-    const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
-      setVisible(true);
-    });
+    // const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
+    //   setVisible(true);
+    // });
 
     setTimeout(() => {
       setvisible(true);
     }, 3000);
 
     // Clean up event listener when component unmounts
-    return () => {
-      adLoadedListener();
-    };
+    // return () => {
+    //   adLoadedListener();
+    // };
   }, []);
 
   React.useEffect(() => {
@@ -59,6 +59,9 @@ export const NativeAd100 = React.memo(() => {
       }}
       adChoicesPlacement="topRight"
       mediaAspectRatio="any"
+      onAdFailedToLoad={e => {
+        console.log('ad load error', e);
+      }}
       videoOptions={{
         customControlsRequested: true,
       }}>
@@ -79,9 +82,15 @@ export const NativeAd100 = React.memo(() => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-around',
-            width: '98%',
+            width: '100%',
+            paddingTop: 10,
           }}>
-          <View style={{width: '48%'}}>
+          <View
+            style={{
+              width: '48%',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
             <ShimmerPlaceholder
               style={{width: '100%', height: 73}}
               visible={visible}
@@ -118,29 +127,38 @@ export const NativeAd100 = React.memo(() => {
               />
             </ShimmerPlaceholder>
 
-            <ShimmerPlaceholder
-              style={{
-                width: '100%',
-                minHeight: 40,
-                borderRadius: 10,
-              }}
-              visible={visible}
-              shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
-              <CallToActionView
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start'}}>
+              <IconView style={{width: 33, height: 33, borderRadius: 20}} />
+              <ShimmerPlaceholder
                 style={{
-                  width: 94.63,
-                  height: 26,
-                  backgroundColor: '#700FD0',
+                  width: '100%',
+                  minHeight: 40,
                   borderRadius: 10,
                 }}
-                allCaps
-                textStyle={{
-                  fontSize: 10,
-                  textAlign: 'center',
-                  color: '#fff',
-                }}
-              />
-            </ShimmerPlaceholder>
+                visible={visible}
+                shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
+                <CallToActionView
+                  style={{
+                    minHeight: 26,
+                    paddingHorizontal: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: 94.63,
+                    backgroundColor: '#7A3BB8',
+                    borderRadius: 23,
+                  }}
+                  allCaps
+                  textStyle={{
+                    fontSize: 10.51,
+                    flexWrap: 'wrap',
+                    textAlign: 'center',
+                    textTransform: 'capitalize',
+                    color: '#fff',
+                  }}
+                />
+              </ShimmerPlaceholder>
+            </View>
           </View>
         </View>
 
@@ -155,7 +173,15 @@ export const NativeAd100 = React.memo(() => {
               backgroundColor: '#3980FF',
               borderTopLeftRadius: 10,
             }}>
-            <Text style={{color: '#fff', fontSize: 10, textAlign: 'center', verticalAlign: 'middle'}}>Ad</Text>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 10,
+                textAlign: 'center',
+                verticalAlign: 'middle',
+              }}>
+              Ad
+            </Text>
           </View>
         )}
       </View>

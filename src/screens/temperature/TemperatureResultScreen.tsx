@@ -17,8 +17,8 @@ import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
 import PageHeader from './components/PageHeader';
 import {NativeAd150} from '../../Helper/NativeAd150';
-import DisplayAd from '../../components/DisplayAd';
-import { INTERSITIAL_AD_ID } from '../../Helper/AdManager';
+import DisplayRewardedAd from '../../components/DisplayRewardedAd';
+import { REWARED_AD_ID } from '../../Helper/AdManager';
 
 const {width} = Dimensions.get('window');
 const itemWidth = width - 80;
@@ -81,7 +81,7 @@ const TemperatureResultScreen = ({navigation}: {navigation: any}) => {
 
   const navigateScreen = (screenName: any) => {
     navigation.navigate(screenName, {
-      tab: 'health',
+      tab: 'insight',
     });
   };
 
@@ -139,7 +139,7 @@ const TemperatureResultScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-      {loader && <DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID} />}
+      {loader && (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
     </>
   );
 };

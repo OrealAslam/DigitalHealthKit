@@ -16,12 +16,11 @@ import PageHeader from './components/PageHeader';
 import {NativeAd150} from '../../Helper/NativeAd150';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
-import LoadingAnimation from '../../components/LoadingAnimation';
 import Recomandations from '../../components/Recomandations';
 import {useIsFocused} from '@react-navigation/native';
 import {lang} from '../../../global';
-import DisplayAd from '../../components/DisplayAd';
-import { INTERSITIAL_AD_ID } from '../../Helper/AdManager';
+import { REWARED_AD_ID } from '../../Helper/AdManager';
+import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 
 const {width} = Dimensions.get('window');
 const itemWidth = width - 80;
@@ -111,7 +110,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
   );
 
   const navigateScreen = (screenName: any) => {
-    navigation.navigate(screenName, {tab: 'health'});
+    navigation.navigate(screenName, {tab: 'insight'});
   };
   const _continue = async () => {
     setloader(false);
@@ -203,8 +202,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-
-      {loader && <DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID} />}
+      {loader && (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
     </>
   );
 };

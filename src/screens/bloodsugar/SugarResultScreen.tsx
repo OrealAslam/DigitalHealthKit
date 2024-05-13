@@ -11,15 +11,15 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Recomandations from '../../components/Recomandations';
-import PageHeader from './components/PageHeader';
 import {NativeAd150} from '../../Helper/NativeAd150';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
+import {REWARED_AD_ID, INTERSITIAL_AD_ID} from '../../Helper/AdManager';
+import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 import DisplayAd from '../../components/DisplayAd';
-import { INTERSITIAL_AD_ID } from '../../Helper/AdManager';
 
 const {width} = Dimensions.get('window');
 const itemWidth = width - 80;
@@ -30,6 +30,7 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
   const [pressurelevel, setpressurelevel] = useState('Normal');
   const [data, setdata] = useState(['', '']);
   const [loader, setloader] = useState(false);
+  const [back, setback] = useState(false);
   const [language, setlanguage] = useState({
     dashobard: {bs: '', bsrestitle: '', recommended: ''},
     main: {add: '', unlock: ''},
@@ -119,7 +120,8 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
   }, [language]);
 
   const backAction = () => {
-    return navigation.navigate('HomeScreen', {tab: 'tracker'});
+    navigation.navigate('HomeScreen', {tab: 'tracker'});
+    return true;
   };
 
   const backHandler = BackHandler.addEventListener(
@@ -129,7 +131,7 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
 
   const navigateScreen = (screenName: any) => {
     navigation.navigate(screenName, {
-      tab: 'health',
+      tab: 'insight',
     });
   };
 
@@ -144,7 +146,12 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
 
   const _continue = async () => {
     setloader(false);
-    navigation.navigate('SugarResultScreen');
+    if (back == true) {
+      setback(false);
+      navigation.navigate('HomeScreen', {tab: 'home'});
+    } else {
+      navigation.navigate('SugarResultScreen');
+    }
   };
 
   return (
@@ -152,7 +159,8 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('HomeScreen', {tab: 'tracker'})}
+            onPress={() => setback(true)}
+            // onPress={() => navigation.navigate('HomeScreen', {tab: 'tracker'})}
             style={{paddingHorizontal: 5}}
             accessibilityLabel="Back">
             <Image
@@ -228,7 +236,9 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-
+          <View style={styles.NativeAd}>
+            <NativeAd150 />
+          </View>
           <View style={styles.recomandation}>
             <Recomandations
               putScreen={'HomeScreen'}
@@ -237,7 +247,11 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-      {loader && <DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID} />}
+      {loader && (
+        <DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID} />
+      )}
+
+      {back && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>)}
     </>
   );
 };
@@ -277,9 +291,8 @@ const styles = StyleSheet.create({
   NativeAd: {
     width: width * 0.86,
     height: undefined,
-    backgroundColor: `rgba(0,0,0,0.3)`,
     alignSelf: 'center',
-    marginBottom: 15,
+    marginVertical: 15,
   },
   recomandation: {
     width: width,

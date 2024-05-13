@@ -21,18 +21,18 @@ export const NativeAd150 = React.memo(() => {
   const [visible, setvisible] = useState(false);
 
   useEffect(() => {
-    const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
-      setVisible(true);
-    });
+    // const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
+    //   setVisible(true);
+    // });
 
     setTimeout(() => {
       setvisible(true);
     }, 3000);
 
     // Clean up event listener when component unmounts
-    return () => {
-      adLoadedListener();
-    };
+    // return () => {
+    //   adLoadedListener();
+    // };
   }, []);
 
   useEffect(() => {
@@ -52,6 +52,7 @@ export const NativeAd150 = React.memo(() => {
       }}
       adChoicesPlacement="topRight"
       mediaAspectRatio="any"
+      onAdFailedToLoad={(e)=>{console.log('ad load error', e)}}
       videoOptions={{
         customControlsRequested: true,
       }}>
@@ -61,20 +62,20 @@ export const NativeAd150 = React.memo(() => {
           height: 'auto',
           padding: 10,
           paddingBottom: 0,
-          backgroundColor: '#b0c0e8',
+          backgroundColor: '#FFFFFF',
           alignItems: 'center',
           alignSelf: 'center',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          borderRadius: 10,
+          borderRadius: 16,
         }}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
-            width: '95%',
+            width: '98%',
           }}>
-          <View style={{width: '48%'}}>
+          <View style={{width: '48%', paddingTop: 10}}>
             <ShimmerPlaceholder
               style={{width: '100%', height: 73}}
               visible={visible}
@@ -83,7 +84,6 @@ export const NativeAd150 = React.memo(() => {
                 style={{
                   width: '88%',
                   alignSelf: 'center',
-                  // width: 141.26,
                   height: 73,
                   resizeMode: 'contain',
                 }}
@@ -98,20 +98,6 @@ export const NativeAd150 = React.memo(() => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <ShimmerPlaceholder
-              visible={visible}
-              style={{width: '100%',marginBottom: 10}}
-              shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
-              <HeadlineView
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: 14,
-                  color: '#000',
-                  width: '100%',
-                  height: 'auto',
-                }}
-              />
-            </ShimmerPlaceholder>
 
             <ShimmerPlaceholder
               visible={visible}
@@ -126,6 +112,13 @@ export const NativeAd150 = React.memo(() => {
                 }}
               />
             </ShimmerPlaceholder>
+
+            <ShimmerPlaceholder
+              visible={visible}
+              style={{width: '100%'}}
+              shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
+              <IconView style={{width: 22, height: 22, borderRadius: 15}} />
+            </ShimmerPlaceholder>
           </View>
         </View>
 
@@ -135,7 +128,7 @@ export const NativeAd150 = React.memo(() => {
             style={{
               width: '100%',
               minHeight: 45,
-              marginTop: 10,
+              marginTop: 15,
               borderRadius: 10,
               marginBottom: 15,
             }}
@@ -147,15 +140,16 @@ export const NativeAd150 = React.memo(() => {
                 paddingHorizontal: 12,
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: 275,
-                backgroundColor: '#700FD0', // #5F45FE rest of the Application
-                borderRadius: 16,
+                width: 246,
+                backgroundColor: '#7A3BB8',
+                borderRadius: 23,
               }}
               allCaps
               textStyle={{
-                fontSize: 16,
+                fontSize: 19,
                 flexWrap: 'wrap',
                 textAlign: 'center',
+                textTransform: 'capitalize',
                 color: '#fff',
               }}
             />

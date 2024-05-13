@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useInterstitialAd } from 'react-native-google-mobile-ads';
+import { useRewardedAd } from 'react-native-google-mobile-ads';
 
-export default function InterstitialFlooring(props: any) {
+export default function RewardedAd(props: any) {
   const [errorStatus, seterrorStatus] = useState(false);
 
-  const { isLoaded, isClosed, load, show, error } = useInterstitialAd(
+  const { isLoaded, isClosed, load, show, error } = useRewardedAd(
     props.AD_ID,
     {
       requestNonPersonalizedAdsOnly: true,

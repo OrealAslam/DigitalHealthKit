@@ -1,4 +1,11 @@
-import {View, Text, ScrollView, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Dimensions,
+  Image,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import DashboardContent from './components/DashboardContent';
 import Recomandations from '../../../components/Recomandations';
@@ -33,46 +40,57 @@ const Dashboard = (props: any) => {
   }, [language]);
 
   return (
-    <>
-
-
+    <ScrollView style={styles.mainContainer} decelerationRate={'fast'} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.heading}>{langstr?.main.homeTitle}</Text>
-      </View>
-      
-      <View style={styles.mainContainer}>
-        <ScrollView style={{borderTopLeftRadius: 60}} decelerationRate={'fast'}  showsVerticalScrollIndicator={false}>
-          <DashboardContent navigate={props.navigateScreen} />
-          <Recomandations
-            setselectedmenu={props.setselectedmenu}
-            putScreen={''}
+        {/* <Text style={styles.heading}>{langstr?.main.homeTitle}</Text> */}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            alignContent: 'center'
+          }}>
+          <Text style={styles.heading}>{props.temperature} F</Text>
+          <Image
+            style={styles.cloudImg}
+            source={require('../../../assets/icons/cloud.png')}
           />
-        </ScrollView>
+        </View>
+
+        <View>
+          <Image
+            style={{width: 34, height: 34}}
+            source={require('../../../assets/icons/reward.png')}
+          />
+        </View>
       </View>
-    </>
+      <DashboardContent navigate={props.navigateScreen} />
+      <Recomandations setselectedmenu={props.setselectedmenu} putScreen={''} />
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   header: {
     width: width,
-    height: '16%',
-    backgroundColor: '#6300C7',
+    padding: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignContent: 'center'
   },
   heading: {
-    color: '#FFFFFF',
-    fontSize: 20,
+    color: '#141417',
+    fontSize: 25,
     fontWeight: '700',
     top: '21%',
-    left: '6%'
+    left: '6%',
+  },
+  cloudImg: {
+    width: 30.51,
+    height: 23,
   },
   mainContainer: {
-    width: width,
-    maxHeight: '74%',
-    borderTopLeftRadius: 60,
-    top: '-7%',
-    paddingTop: 20,
-    zIndex: 0,
-    backgroundColor: '#f4f4f4'
-  },
+    maxHeight: height * 0.83
+  }
 });
 export default Dashboard;

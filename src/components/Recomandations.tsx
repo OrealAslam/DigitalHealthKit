@@ -35,9 +35,9 @@ const Recomandations = (props: any) => {
   const myFunction = (screen: any) => {
     try {
       if (screen != '') {
-        props.navigateScreen(screen, 'health');
+        props.navigateScreen(screen, 'insight');
       } else {
-        props.setselectedmenu('health');
+        props.setselectedmenu('insight');
       }
     } catch (e) {
       return;
@@ -86,7 +86,7 @@ const Recomandations = (props: any) => {
           </ImageBackground>
         </TouchableOpacity>
 
-        <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+        <View style={[styles.nativeContainer, {marginLeft: 10, marginBottom: 15}]}>
           <NativeAd100 />
         </View>
         <TouchableOpacity onPress={() => myFunction(props.putScreen)}>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 17,
     height: 22.35,
-    marginLeft: 5,
+    marginLeft: 15,
   },
   title: {
     color: '#2E2E2E',
@@ -140,9 +140,10 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   articleContainer: {
-    width: width,
+    width: width * 0.88,
     flexDirection: 'column',
     paddingBottom: 30,
+    alignSelf: 'center'
     // backgroundColor: 'yellow'
   },
   articleCard: {

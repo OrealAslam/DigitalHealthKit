@@ -106,7 +106,7 @@ const AdTemperature = ({navigation}: {navigation: any}) => {
   };
 
   const backAction = () => {
-    navigation.navigate('HomeScreen');
+    setcloseloader(true);
     return true;
   };
   const backHandler = BackHandler.addEventListener(
@@ -312,7 +312,6 @@ const AdTemperature = ({navigation}: {navigation: any}) => {
         />
       </View>
       <Banner />
-      {/* {loader && <LoadingAnimation iconType={'tick'} />} */}
       {closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
     </>
   );

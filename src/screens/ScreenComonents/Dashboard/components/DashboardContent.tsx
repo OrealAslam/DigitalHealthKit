@@ -11,7 +11,8 @@ import React, {useEffect, useState} from 'react';
 
 import {get_async_data} from '../../../../Helper/AppHelper';
 import {lang} from '../../../../../global';
-import { NativeAd100 } from '../../../../Helper/NativeAd100';
+import {NativeAd150} from '../../../../Helper/NativeAd150';
+import LottieView from 'lottie-react-native';
 
 const {width} = Dimensions.get('window');
 
@@ -19,7 +20,7 @@ const cardWidth = width - 40;
 const cardRatio = cardWidth / 1312;
 
 const colCardWidth = width / 2 - 30;
-const colCardRatio = colCardWidth / 640;
+const colCardRatio = colCardWidth / 632;
 
 const DashboardContent = (props: any) => {
   const [recentbp, setrecentbp] = useState(null);
@@ -29,6 +30,7 @@ const DashboardContent = (props: any) => {
   const [recenttemp, setrecenttemp] = useState(null);
   const [language, setlanguage] = useState({
     dashobard: {bp: '', bs: '', temperature: '', bmi: '', addNow: ''},
+    main: {more: ''},
   });
   const [cardtitleone, setcardtitleone] = useState('Blood Pressure');
   const [cardtitletwo, setcardtitletwo] = useState('Blood Sugar');
@@ -74,88 +76,136 @@ const DashboardContent = (props: any) => {
 
   return (
     <View style={styles.dashboardCardContainer}>
-      {/* <View style={{backgroundColor: '#fff'}}>
-      </View> */}
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => props.navigate('AddBloodSugar')}>
+        onPress={() => props.navigate('SugarBridgeScreen')}>
         <ImageBackground
           style={styles.dashboardCard}
           source={require('../../../../assets/images/dashboard_icons_new/bloodsugar_new.png')}>
           <Text
-            style={[
-              styles.cardtitle,
-              {fontSize: 23, top: '12%', left: '5%', fontWeight: '700'},
-            ]}>
+            style={[styles.cardtitle, {marginLeft: 20, marginVertical: 15}]}>
             {cardtitletwo}
           </Text>
-          <Text style={styles.result}>
-            {recentbs != null ? recentbs + '  mmol/L' : add}
-          </Text>
+
+          <TouchableOpacity
+            activeOpacity={0.9}
+            style={styles.addbtn}
+            onPress={() => props.navigate('AddBloodSugar')}>
+            <Image
+              style={styles.addbtn}
+              source={require('../../../../assets/images/dashboard_icons_new/add.png')}
+            />
+          </TouchableOpacity>
         </ImageBackground>
       </TouchableOpacity>
 
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => props.navigate('AddBloodPressure')}>
+        onPress={() => props.navigate('BpBridgeScreen')}>
         <ImageBackground
           style={styles.dashboardCard}
           source={require('../../../../assets/images/dashboard_icons_new/bloodpressure_new.png')}>
           <Text
-            style={[
-              styles.cardtitle,
-              {fontSize: 23, top: '12%', left: '5%', fontWeight: '700'},
-            ]}>
+            ellipsizeMode='head'
+            style={[styles.cardtitle, {marginLeft: 20, marginVertical: 15}]}>
             {cardtitleone}
           </Text>
-          <Text style={styles.result}>
-            {recentbp != null ? recentbp + '  mmHg' : add}
-          </Text>
+
+          <TouchableOpacity
+            activeOpacity={0.9}
+            style={styles.addbtn}
+            onPress={() => props.navigate('AddBloodPressure')}>
+            <Image
+              style={styles.addbtn}
+              source={require('../../../../assets/images/dashboard_icons_new/add.png')}
+            />
+          </TouchableOpacity>
         </ImageBackground>
       </TouchableOpacity>
 
       <View style={[styles.nativeContainer, {marginLeft: 10}]}>
-        <NativeAd100 />
+        <NativeAd150 />
       </View>
 
       <View style={styles.multipleCardContainer}>
-        <TouchableOpacity
-          activeOpacity={0.9}
-          onPress={() => props.navigate('BmiScreen')}>
-          <ImageBackground
-            style={styles.colCard}
-            source={require('../../../../assets/images/dashboard_icons_new/bmi.png')}>
-            <Text
-              style={[
-                styles.cardtitle,
-                {fontSize: 18, top: '8%', left: '11%', fontWeight: '700'},
-              ]}>
-              {cardtitlefour}
-            </Text>
-            <Text style={styles.result}>
-              {recentbmi != null ? recentbmi.split(' ')[0] : add}
-            </Text>
-          </ImageBackground>
-        </TouchableOpacity>
+        <ImageBackground
+          style={styles.colCard}
+          source={require('../../../../assets/images/dashboard_icons_new/bmi.png')}>
+          <Text
+            style={[
+              styles.cardtitle,
+              {marginLeft: 20, position: 'absolute', bottom: 63, fontSize: 17},
+            ]}>
+            {cardtitlefour}
+          </Text>
 
-        <TouchableOpacity
-          activeOpacity={0.9}
-          onPress={() => props.navigate('AdTemperature')}>
-          <ImageBackground
-            style={styles.colCard}
-            source={require('../../../../assets/images/dashboard_icons_new/temerature.png')}>
-            <Text
-              style={[
-                styles.cardtitle,
-                {fontSize: 18, top: '8%', left: '11%', fontWeight: '700'},
-              ]}>
-              {cardtitlethree}
+          <TouchableOpacity
+            style={{position: 'absolute', top: 10, right: 20}}
+            activeOpacity={0.9}
+            onPress={() => props.navigate('BmiResultScreen')}>
+            <Text style={[styles.cardtitle, {fontSize: 14}]}>
+              {language.main.more}
             </Text>
-            <Text style={styles.result}>
-              {recenttemp != null ? recenttemp : 'Add Record'}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => props.navigate('BmiScreen')}
+            activeOpacity={0.9}
+            style={{
+              width: 78,
+              height: 33,
+              position: 'absolute',
+              bottom: 15,
+              left: 15,
+            }}>
+            <Image
+              style={{width: 78, height: 33}}
+              source={require('../../../../assets/images/dashboard_icons_new/add.png')}
+            />
+          </TouchableOpacity>
+        </ImageBackground>
+
+        <ImageBackground
+          style={styles.colCard}
+          source={require('../../../../assets/images/dashboard_icons_new/temerature.png')}>
+          <LottieView
+            style={{width: 64, height: 64, top: 22}}
+            source={require('../../../../assets/temp_lottir.json')}
+            autoPlay
+            loop
+          />
+          <Text
+            style={[
+              styles.cardtitle,
+              {marginLeft: 20, position: 'absolute', bottom: 63, fontSize: 17},
+            ]}>
+            {cardtitlethree}
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => props.navigate('TemperatureResultScreen')}
+            style={{position: 'absolute', top: 10, right: 20}}
+            activeOpacity={0.9}>
+            <Text style={[styles.cardtitle, {fontSize: 14}]}>
+              {language.main.more}
             </Text>
-          </ImageBackground>
-        </TouchableOpacity>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.navigate('AdTemperature')}
+            activeOpacity={0.9}
+            style={{
+              width: 78,
+              height: 33,
+              position: 'absolute',
+              bottom: 15,
+              left: 15,
+            }}>
+            <Image
+              style={{width: 78, height: 33}}
+              source={require('../../../../assets/images/dashboard_icons_new/add.png')}
+            />
+          </TouchableOpacity>
+        </ImageBackground>
       </View>
     </View>
   );
@@ -168,6 +218,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 0,
+    marginTop: 20,
   },
   nativeContainer: {
     width: width * 0.88,
@@ -183,26 +234,20 @@ const styles = StyleSheet.create({
   },
   colCard: {
     width: colCardWidth,
-    height: 580 * colCardRatio,
+    height: 660 * colCardRatio,
     alignItems: 'flex-start',
-    justifyContent: 'flex-end',
-    paddingBottom: 7,
-    paddingLeft: 9,
   },
   dashboardCard: {
     width: cardWidth,
-    height: 580 * cardRatio,
+    height: 520 * cardRatio,
     marginBottom: 12,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-end',
+    // alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   cardtitle: {
     color: '#fff',
-    fontWeight: '600',
-    fontSize: 17,
-    position: 'absolute',
-    top: 10,
-    left: 10,
+    fontSize: 24,
+    fontWeight: '700',
   },
   result: {
     color: '#fff',
@@ -210,6 +255,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: '8%',
     left: '5%',
+  },
+  addbtn: {
+    width: 90,
+    height: 38.77,
+    marginBottom: 20,
+    marginLeft: 10,
   },
 });
 export default DashboardContent;

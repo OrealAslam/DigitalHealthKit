@@ -23,6 +23,7 @@ import NotesPopup from './components/NotesPopup';
 import {useIsFocused} from '@react-navigation/native';
 import {lang} from '../../../global';
 import DisplayAd from '../../components/DisplayAd';
+import ExitModel from './components/ExitModel';
 
 const {width, height} = Dimensions.get('window');
 const today = moment(new Date()).format('YYYY-MM-DD');
@@ -168,7 +169,8 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
   };
 
   const backAction = () => {
-    navigation.navigate('HomeScreen');
+    // navigation.navigate('HomeScreen');
+    setcloseloader(true);
     return true;
   };
 
@@ -291,7 +293,8 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
         />
       )}
 
-    {closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
+    {save && (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>)}
+    {closeloader && (<ExitModel setcloseloader={setcloseloader} navigation={navigation} />)}
     </>
   );
 }

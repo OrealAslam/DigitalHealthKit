@@ -110,7 +110,7 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
   }, [weight, height]);
 
   const backAction = () => {
-    navigation.navigate('HomeScreen');
+    setcloseloader(true);
     return true;
   };
 
@@ -248,11 +248,7 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
       </View>
       <Banner />
       {/* {loader && <LoadingAnimation iconType={'tick'} />} */}
-      {closeloader == true || save == true ? (
-        <DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID} />
-      ) : (
-        <></>
-      )}
+      {closeloader == true|| save == true ? (<DisplayAd _continue={_continue} adId={INTERSITIAL_AD_ID}/>) : (<></>)}
     </>
   );
 };
