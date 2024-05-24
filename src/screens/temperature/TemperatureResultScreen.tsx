@@ -16,7 +16,7 @@ import PieChartAdComponent from './components/PieChartAdComponent';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
 import PageHeader from './components/PageHeader';
-import {NativeAd150} from '../../Helper/NativeAd150';
+// import {NativeAd150} from '../../Helper/NativeAd150';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 import { REWARED_AD_ID } from '../../Helper/AdManager';
 
@@ -121,9 +121,9 @@ const TemperatureResultScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          <View style={styles.NativeAd}>
+          {/* <View style={styles.NativeAd}>
             <NativeAd150 />
-          </View>
+          </View> */}
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}

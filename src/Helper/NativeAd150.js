@@ -9,14 +9,14 @@ import NativeAdView, {
   StoreView,
   TaglineView,
   ImageView,
+  AdBadge
 } from 'react-native-admob-native-ads';
-import {NATIVE_AD_ID} from './AdManager';
 import {createShimmerPlaceholder} from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
-export const NativeAd150 = React.memo(() => {
+export const NativeAd150 = React.memo((props) => {
   const nativeAdViewRef = useRef(NativeAdView);
   const [visible, setvisible] = useState(false);
 
@@ -43,7 +43,7 @@ export const NativeAd150 = React.memo(() => {
   return (
     <NativeAdView
       ref={nativeAdViewRef}
-      adUnitID={NATIVE_AD_ID}
+      adUnitID={props.adId}
       style={{
         width: '100%',
         alignSelf: 'center',
@@ -52,7 +52,13 @@ export const NativeAd150 = React.memo(() => {
       }}
       adChoicesPlacement="topRight"
       mediaAspectRatio="any"
-      onAdFailedToLoad={(e)=>{console.log('ad load error', e)}}
+      onAdFailedToLoad={async (e)=> {
+        console.log('ad load error', e);
+        await analytics().logEvent('native_ad_impression');
+      }}
+      onAdImpression={(e)=>{
+        console.log('Native Ad Impression created');
+      }}
       videoOptions={{
         customControlsRequested: true,
       }}>
@@ -69,6 +75,22 @@ export const NativeAd150 = React.memo(() => {
           justifyContent: 'flex-end',
           borderRadius: 16,
         }}>
+        <AdBadge
+          style={{
+            width: 18,
+            height: 18,
+            borderWidth: 0,
+            borderTopLeftRadius: 6,
+            backgroundColor: '#7A3BB8'
+          }}
+          textStyle={{
+            fontSize: 10,
+            color: 'green',
+            color: '#fff',
+            alignSelf: 'center'
+          }}
+        />
+
         <View
           style={{
             flexDirection: 'row',
@@ -98,7 +120,6 @@ export const NativeAd150 = React.memo(() => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-
             <ShimmerPlaceholder
               visible={visible}
               style={{width: '100%'}}
@@ -122,7 +143,6 @@ export const NativeAd150 = React.memo(() => {
           </View>
         </View>
 
-        
         <View style={{width: '100%'}}>
           <ShimmerPlaceholder
             style={{
@@ -155,21 +175,6 @@ export const NativeAd150 = React.memo(() => {
             />
           </ShimmerPlaceholder>
         </View>
-
-        {visible == false ? null : (
-          <View
-            style={{
-              width: 16,
-              height: 16,
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              backgroundColor: '#3980FF',
-              borderTopLeftRadius: 10,
-            }}>
-            <Text style={{color: '#fff', fontSize: 10,textAlign: 'center', verticalAlign: 'middle'}}>Ad</Text>
-          </View>
-        )}
       </View>
     </NativeAdView>
   );

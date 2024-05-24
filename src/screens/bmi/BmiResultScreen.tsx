@@ -13,13 +13,13 @@ import analytics from '@react-native-firebase/analytics';
 import React, {useState, useEffect} from 'react';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import PageHeader from './components/PageHeader';
-import {NativeAd150} from '../../Helper/NativeAd150';
+// import {NativeAd150} from '../../Helper/NativeAd150';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
 import Recomandations from '../../components/Recomandations';
 import {useIsFocused} from '@react-navigation/native';
 import {lang} from '../../../global';
-import { REWARED_AD_ID } from '../../Helper/AdManager';
+import {NATIVE_AD_ID_ONE, REWARED_AD_ID} from '../../Helper/AdManager';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 
 const {width} = Dimensions.get('window');
@@ -78,7 +78,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
   useEffect(() => {
     (async () => {
       try {
-        await analytics().logEvent('bmi_result_screen'); 
+        await analytics().logEvent('bmi_result_screen');
         let lan = await lang();
         setlanguage(lan);
         let response = await get_report(REPORT_TYPES.bmi);
@@ -135,7 +135,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
         />
         <ScrollView style={{flex: 1}}>
           <View style={styles.colouredBg}>
-          <TouchableOpacity
+            <TouchableOpacity
               style={styles.ibutton}
               onPress={() =>
                 Linking.openURL('https://medlineplus.gov/vitalsigns.html')
@@ -185,9 +185,9 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          <View style={styles.NativeAd}>
-            <NativeAd150 />
-          </View>
+          {/* <View style={styles.NativeAd}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE} />
+          </View> */}
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}
@@ -202,7 +202,9 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-      {loader && (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
+      {loader && (
+        <DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID} />
+      )}
     </>
   );
 };

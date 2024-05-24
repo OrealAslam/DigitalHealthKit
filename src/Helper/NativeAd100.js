@@ -41,8 +41,8 @@ export const NativeAd100 = React.memo(() => {
     //   adLoadedListener();
     // };
   }, []);
-
-  React.useEffect(() => {
+  useEffect(() => {
+    // Load the native ad
     nativeAdViewRef.current?.loadAd();
   }, []);
 
@@ -57,7 +57,9 @@ export const NativeAd100 = React.memo(() => {
         alignContent: 'center',
         backgroundColor: 'transparent',
       }}
+      onNativeAdLoaded={(load)=>{setvisible(true);}}
       adChoicesPlacement="topRight"
+      onAdOpened={(e)=>console.log('open console ', e)}
       mediaAspectRatio="any"
       onAdFailedToLoad={e => {
         console.log('ad load error', e);

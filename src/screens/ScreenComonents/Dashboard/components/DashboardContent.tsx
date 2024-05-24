@@ -13,6 +13,7 @@ import {get_async_data} from '../../../../Helper/AppHelper';
 import {lang} from '../../../../../global';
 import {NativeAd150} from '../../../../Helper/NativeAd150';
 import LottieView from 'lottie-react-native';
+import { NATIVE_AD_ID_ONE } from '../../../../Helper/AdManager';
 
 const {width} = Dimensions.get('window');
 
@@ -123,9 +124,9 @@ const DashboardContent = (props: any) => {
         </ImageBackground>
       </TouchableOpacity>
 
-      <View style={[styles.nativeContainer, {marginLeft: 10}]}>
-        <NativeAd150 />
-      </View>
+      {/* <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+        <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
+      </View> */}
 
       <View style={styles.multipleCardContainer}>
         <ImageBackground

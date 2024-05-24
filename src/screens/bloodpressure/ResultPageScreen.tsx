@@ -13,11 +13,11 @@ import React, {useEffect, useState} from 'react';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
 import Recomandations from '../../components/Recomandations';
-import {NativeAd150} from '../../Helper/NativeAd150';
+// import {NativeAd150} from '../../Helper/NativeAd150';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
-import { REWARED_AD_ID } from '../../Helper/AdManager';
+import { NATIVE_AD_ID_ONE, REWARED_AD_ID } from '../../Helper/AdManager';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 
 const {width} = Dimensions.get('window');
@@ -220,9 +220,9 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          <View style={styles.NativeAd}>
-            <NativeAd150 />
-          </View>
+          {/* <View style={styles.NativeAd}>
+          <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
+          </View> */}
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}

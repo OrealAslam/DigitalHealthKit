@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Recomandations from '../../components/Recomandations';
-import {NativeAd150} from '../../Helper/NativeAd150';
+// import {NativeAd150} from '../../Helper/NativeAd150';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
-import {REWARED_AD_ID, INTERSITIAL_AD_ID} from '../../Helper/AdManager';
+import {REWARED_AD_ID, INTERSITIAL_AD_ID, NATIVE_AD_ID_ONE} from '../../Helper/AdManager';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 import DisplayAd from '../../components/DisplayAd';
 
@@ -227,18 +227,18 @@ const SugarResultScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          <View style={styles.NativeAd}>
+          {/* <View style={styles.NativeAd}>
             <NativeAd150 />
-          </View>
+          </View> */}
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}
             showAd={showAd}
             loader={loader}
           />
-          <View style={styles.NativeAd}>
-            <NativeAd150 />
-          </View>
+          {/* <View style={styles.NativeAd}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
+          </View> */}
           <View style={styles.recomandation}>
             <Recomandations
               putScreen={'HomeScreen'}

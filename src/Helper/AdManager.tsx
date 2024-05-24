@@ -20,8 +20,11 @@ export const INTERSITIAL_AD_ID_OLD = 'ca-app-pub-3781511156022357/6542093089'; /
 export const REWARED_AD_ID = 'ca-app-pub-3781511156022357/8209433946';
 export const REWARED_INTERSTITIAL_AD_ID = 'ca-app-pub-3781511156022357/9359828115';
 export const NATIVE_AD_ID = 'ca-app-pub-3781511156022357/3002341317';
-export const INTERSITIAL_AD_ID_HIGH = 'ca-app-pub-3781511156022357/6542093089';
-export const INTERSITIAL_AD_ID_MED = 'ca-app-pub-3781511156022357/6542093089';
+
+export const LANGUAGE_NATIVE_AD_ID = 'ca-app-pub-3781511156022357/7644102324';
+export const NATIVE_AD_ID_ONE = 'ca-app-pub-3781511156022357/2064742085';
+export const NATIVE_AD_ID_TWO = 'ca-app-pub-3781511156022357/3245460808';
+export const ARTICLE_AD_ID = 'ca-app-pub-3781511156022357/1918322292';
 
 // TEST AD ID's
 // export const APPOPEN_AD_ID = 'ca-app-pub-3940256099942544/9257395921';
@@ -30,9 +33,12 @@ export const INTERSITIAL_AD_ID_MED = 'ca-app-pub-3781511156022357/6542093089';
 // export const REWARED_INTERSTITIAL_AD_ID = 'ca-app-pub-3940256099942544/5354046379';
 // export const NATIVE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
 // export const INTERSITIAL_AD_ID = 'ca-app-pub-3940256099942544/1033173712';
-// export const INTERSITIAL_AD_ID_HIGH = 'ca-app-pub-3940256099942544/1033173712';
-// export const INTERSITIAL_AD_ID_MED = 'ca-app-pub-3940256099942544/1033173712';
 // export const INTERSITIAL_AD_ID_OLD = 'ca-app-pub-3940256099942544/1033173712';
+
+// export const LANGUAGE_NATIVE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
+// export const NATIVE_AD_ID_ONE = 'ca-app-pub-3940256099942544/2247696110';
+// export const NATIVE_AD_ID_TWO = 'ca-app-pub-3940256099942544/2247696110';
+// export const ARTICLE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
 
 export var AD_LOADED = false;
 // Initialize
@@ -62,12 +68,12 @@ export const show_app_open = async () => {
 export const Banner = () => {
   return (
     <BannerAd
-      onAdLoaded={() => {
-       console.log('banner loaded');
+      onAdLoaded={async () => {
+       await analytics().logEvent('banner_ad_impression');
       }}
       onAdFailedToLoad={(error) => {
         console.log('banner not loaded', error);
-      }}
+      }}      
       unitId={BANNER_AD_ID}
       size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
       requestOptions={{requestNonPersonalizedAdsOnly: true,  networkExtras: {
@@ -132,7 +138,7 @@ export const load_interstitial = async () => {
 export const show_interstitial = async () => {
   console.log('interstitial showed');
   interstitial.show();
-  await analytics().logEvent('interstitial_ad');
+  await analytics().logEvent('interstitial_ad_impression');
 };
 
 // Rewared Ad
@@ -159,5 +165,5 @@ export const load_rewarded = async (load_state: Function) => {
 
 export const show_rewarded = async () => {
   rewarded.show();
-  await analytics().logEvent('rewarded_ad');
+  await analytics().logEvent('rewarded_ad_impression');
 };

@@ -10,6 +10,7 @@ import {APPOPEN_AD_ID} from './src/Helper/AdManager';
 import {View} from 'react-native';
 import {lang} from './global';
 
+
 const App = () => {
   const [firstTime, setfirstTime] = useState(true);
   const [splashClosed, setsplashClosed] = useState(false);
@@ -74,6 +75,7 @@ const App = () => {
         setfirstTime(false);
       }
     })();
+
   }, []);
 
   useEffect(() => {

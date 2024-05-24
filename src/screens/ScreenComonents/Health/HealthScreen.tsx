@@ -75,7 +75,6 @@ const HealthScreen = (props: any) => {
       try {
         await analytics().logEvent('health_tab');
         let lan = await lang();
-        // console.log(lan)
         setlanguage(lan);
         setselectedmenu('health');
       } catch (e) {
@@ -123,39 +122,6 @@ const HealthScreen = (props: any) => {
       category: category,
     });
   };
-
-  // const incrementclickcount = async () => {
-  //   let click = await get_async_data('clicks');
-  //   console.log('total clicks', click);
-  //   if(click != null || click != undefined) {
-  //     let x = parseInt(click);
-  //     console.log(typeof(click))
-  //     x = x + 1;
-  //     await set_async_data('clicks', x);
-  //   } else {
-  //     let x = parseInt(click);
-  //     x = x + 1;
-  //     await set_async_data('clicks', x);
-  //   }
-  // }
-
-  // const checkforad = async () => {
-  //   let val = await get_async_data('clicks');
-  //   console.log('haha', val);
-  //   if(val != null || val != undefined) {
-  //     // val = parseInt(val);
-  //     let x = parseInt(val);
-  //     if(x%4 == 0) {
-  //       console.log('show', val);
-  //       setshowad(true);
-  //     } else {
-  //       console.log('not show ad', val);
-  //       setshowad(false);
-  //     }
-  //   } else {
-  //     await set_async_data('clicks', '1');
-  //   }
-  // }
 
   return (
     <>

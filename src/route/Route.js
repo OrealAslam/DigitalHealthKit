@@ -5,15 +5,17 @@ import LanguageScreen from '../screens/LanguageScreen';
 import BoardingScreen1 from '../screens/BoardingScreen1';
 import DesclaimerScreen from '../screens/DesclaimerScreen';
 import AdLoading from '../screens/AdLoading';
+import { StatusBar } from 'react-native';
 const Stack = createNativeStackNavigator();
 
+StatusBar.setHidden(true);
 export default function Route() {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="LanguageScreen"
         component={LanguageScreen}
-        options={{headerShown: false,animationenabled: true}}
+        options={{headerShown: false,animationenabled: false}}
       />
       <Stack.Screen
         name="BoardingScreen1"

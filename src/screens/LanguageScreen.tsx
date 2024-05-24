@@ -10,11 +10,12 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {set_async_data} from '../Helper/AppHelper';
-import {NativeAd150} from '../Helper/NativeAd150';
+// import {NativeAd150} from '../Helper/NativeAd150';
 import analytics from '@react-native-firebase/analytics';
 const {width} = Dimensions.get('screen');
 import {lang as language} from '../../global';
 import {translation} from '../../locales/translation';
+import { LANGUAGE_NATIVE_AD_ID } from '../Helper/AdManager';
 
 const LanguageScreen = ({navigation}: {navigation: any}) => {
   const [selectedLang, setselectedLang] = useState('');
@@ -211,9 +212,9 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.bannerAd}>
-        <NativeAd150 />
-      </View>
+      {/* <View style={styles.bannerAd}>
+        <NativeAd150 adId={LANGUAGE_NATIVE_AD_ID}/>
+      </View> */}
     </SafeAreaView>
   );
 };
@@ -256,8 +257,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bannerAd: {
-    width: width * 0.86,
+    width: width * 0.88,
     alignSelf: 'center',
+    position: 'absolute',
+    bottom: 70,
   },
 });
 export default LanguageScreen;

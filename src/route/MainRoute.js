@@ -23,8 +23,10 @@ import BmiResultScreen from '../screens/bmi/BmiResultScreen';
 import DetailScreen from '../screens/ScreenComonents/Health/DetailScreen';
 import AdTemperature from '../screens/temperature/AdTemperature';
 import TemperatureResultScreen from '../screens/temperature/TemperatureResultScreen';
+import { StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator();
+StatusBar.setHidden(true);
 
 export default function MainRoute(props) {
   return (
@@ -32,7 +34,7 @@ export default function MainRoute(props) {
       <Stack.Screen
         name="HomeScreen"
         component={LandingScreen}
-        options={{headerShown: false, animationenabled: true}}
+        options={{headerShown: false, animationenabled: false}}
       />
       <Stack.Screen
         name="AdLoading"

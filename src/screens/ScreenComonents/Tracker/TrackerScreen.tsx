@@ -12,14 +12,17 @@ import {useIsFocused} from '@react-navigation/native';
 import BloodPressureChart from './components/BloodPressureChart';
 import BloodSugarChart from './components/BloodSugarChart';
 import BMIChart from './components/BMIChart';
-import {NativeAd150} from '../../../Helper/NativeAd150';
+// import {NativeAd150} from '../../../Helper/NativeAd150';
 import {lang} from '../../../../global';
 import {set_async_data} from '../../../Helper/AppHelper';
+import { NATIVE_AD_ID_ONE, NATIVE_AD_ID_TWO, REWARED_AD_ID } from '../../../Helper/AdManager';
+import DisplayRewardedAd from '../../../components/DisplayRewardedAd';
 const {width} = Dimensions.get('window');
 
 const TrackerScreen = (props: any) => {
   const isFocused = useIsFocused();
   const [selectedmenu, setselectedmenu] = useState('tracker');
+  const [rewardadseen, setrewardadseen] = useState(0);
   const [language, setlanguage] = useState({
     main: {trackerTitle: '', add: '', unlock: ''},
     dashobard: {bp: '', bs: '', bmi: ''},
@@ -53,7 +56,8 @@ const TrackerScreen = (props: any) => {
       setlanguage(lan);
       setselectedmenu('tracker');
     })();
-  }, [isFocused]);
+    console.log('focused again');
+  }, [isFocused, rewardadseen]);
 
   useEffect(() => {
     setlangstr(language);
@@ -70,6 +74,11 @@ const TrackerScreen = (props: any) => {
     if (type == 'bmi') {
       await set_async_data('line_chart_bmi_ad', 'seen');
     }
+  };
+
+  const _continue = async () => {
+    props.setloader(false);
+    setrewardadseen(rewardadseen + 1);
   };
 
   return (
@@ -93,15 +102,16 @@ const TrackerScreen = (props: any) => {
             <BloodPressureChart
               navigation={props.navigation}
               langstr={langstr}
+              rewardadseen={rewardadseen}
               showAd={() => {
                 showAd('bp');
               }}
             />
           </View>
 
-          <View style={[styles.nativeContainer, {marginLeft: 10}]}>
-            <NativeAd150 />
-          </View>
+          {/* <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
+          </View> */}
 
           {/* Blood Sugar */}
           <View style={styles.box}>
@@ -115,15 +125,16 @@ const TrackerScreen = (props: any) => {
             <BloodSugarChart
               navigation={props.navigation}
               langstr={langstr}
+              rewardadseen={rewardadseen}
               showAd={() => {
                 showAd('bs');
               }}
             />
           </View>
 
-          <View style={[styles.nativeContainer, {marginLeft: 10}]}>
-            <NativeAd150 />
-          </View>
+          {/* <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+            <NativeAd150 adId={NATIVE_AD_ID_TWO}/>
+          </View> */}
 
           {/* BMI Chart */}
           <View style={[styles.box, {marginBottom: '12%'}]}>
@@ -137,6 +148,7 @@ const TrackerScreen = (props: any) => {
             <BMIChart
               navigation={props.navigation}
               langstr={langstr}
+              rewardadseen={rewardadseen}
               showAd={() => {
                 showAd('bmi');
               }}
@@ -144,6 +156,8 @@ const TrackerScreen = (props: any) => {
           </View>
         </ScrollView>
       </SafeAreaView>
+
+      {props.loader &&  (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
     </>
   );
 };

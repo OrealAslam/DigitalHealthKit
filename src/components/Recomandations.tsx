@@ -10,7 +10,8 @@ import {
 import React, {useEffect, useState} from 'react';
 import {lang} from '../../global';
 import {useIsFocused} from '@react-navigation/native';
-import { NativeAd100 } from '../Helper/NativeAd100';
+// import { NativeAd150 } from '../Helper/NativeAd150';
+// import { NATIVE_AD_ID_TWO } from '../Helper/AdManager';
 const {width} = Dimensions.get('window');
 
 const cardWidth = width - 50;
@@ -86,9 +87,9 @@ const Recomandations = (props: any) => {
           </ImageBackground>
         </TouchableOpacity>
 
-        <View style={[styles.nativeContainer, {marginLeft: 10, marginBottom: 15}]}>
-          <NativeAd100 />
-        </View>
+        {/* <View style={[styles.nativeContainer, {marginLeft: 10, marginBottom: 15}]}>
+          <NativeAd150 adId={NATIVE_AD_ID_TWO}/>
+        </View> */}
         <TouchableOpacity onPress={() => myFunction(props.putScreen)}>
           <ImageBackground
             style={styles.articleCard}
