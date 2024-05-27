@@ -13,11 +13,15 @@ import React, {useEffect, useState} from 'react';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
 import Recomandations from '../../components/Recomandations';
-// import {NativeAd150} from '../../Helper/NativeAd150';
+import {NativeAd150} from '../../Helper/NativeAd150';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
-import { NATIVE_AD_ID_ONE, REWARED_AD_ID } from '../../Helper/AdManager';
+import {
+  NATIVE_AD_ID_ONE,
+  REWARED_AD_ID,
+  NATIVE_AD_ID_TWO,
+} from '../../Helper/AdManager';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 
 const {width} = Dimensions.get('window');
@@ -136,9 +140,9 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
 
   const _continue = async () => {
     setloader(false);
-    if(back == true) {
+    if (back == true) {
       setback(false);
-      navigation.navigate('HomeScreen', {tab: 'home'})
+      navigation.navigate('HomeScreen', {tab: 'home'});
     } else {
       navigation.navigate('ResultPageScreen');
     }
@@ -220,16 +224,18 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          {/* <View style={styles.NativeAd}>
-          <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
-          </View> */}
+          <View style={styles.NativeAd}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE} />
+          </View>
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}
             showAd={showAd}
             loader={loader}
           />
-
+          <View style={[styles.NativeAd, {marginTop: 20}]}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE} />
+          </View>
           <View style={styles.recomandation}>
             <Recomandations
               putScreen={'HomeScreen'}
@@ -238,7 +244,9 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-      {loader &&  (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
+      {loader && (
+        <DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID} />
+      )}
     </>
   );
 };

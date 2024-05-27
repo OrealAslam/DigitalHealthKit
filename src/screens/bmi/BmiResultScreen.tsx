@@ -13,13 +13,17 @@ import analytics from '@react-native-firebase/analytics';
 import React, {useState, useEffect} from 'react';
 import {REPORT_TYPES, get_report, set_async_data} from '../../Helper/AppHelper';
 import PageHeader from './components/PageHeader';
-// import {NativeAd150} from '../../Helper/NativeAd150';
+import {NativeAd150} from '../../Helper/NativeAd150';
 import LineChartAdComponent from './components/LineChartAdComponent';
 import PieChartAdComponent from './components/PieChartAdComponent';
 import Recomandations from '../../components/Recomandations';
 import {useIsFocused} from '@react-navigation/native';
 import {lang} from '../../../global';
-import {NATIVE_AD_ID_ONE, REWARED_AD_ID} from '../../Helper/AdManager';
+import {
+  NATIVE_AD_ID_ONE,
+  NATIVE_AD_ID_TWO,
+  REWARED_AD_ID,
+} from '../../Helper/AdManager';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
 
 const {width} = Dimensions.get('window');
@@ -185,15 +189,19 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          {/* <View style={styles.NativeAd}>
+          <View style={styles.NativeAd}>
             <NativeAd150 adId={NATIVE_AD_ID_ONE} />
-          </View> */}
+          </View>
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}
             showAd={showAd}
             loader={loader}
           />
+
+          <View style={[styles.NativeAd]}>
+            <NativeAd150 adId={NATIVE_AD_ID_TWO} />
+          </View>
           <View style={styles.recomandation}>
             <Recomandations
               putScreen={'HomeScreen'}

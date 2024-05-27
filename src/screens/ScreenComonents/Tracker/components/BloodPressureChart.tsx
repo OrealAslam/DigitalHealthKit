@@ -42,6 +42,7 @@ const LineChartAdComponent = (props: any) => {
     (async () => {
       try {
         let bpAdded = await get_async_data('record_bp');
+
         if (bpAdded == null) {
           setbtnType('Add');
         } else {
@@ -109,7 +110,7 @@ const LineChartAdComponent = (props: any) => {
                 marginBottom: 2,
               },
             ],
-            label: moment(chartData.label[index]).format('HH A'),
+            label: moment(chartData.label[index]).format('MM-DD'),
           };
           dataArr.push(stack);
         }
@@ -254,7 +255,7 @@ const styles = StyleSheet.create({
     overflow: 'scroll',
     marginBottom: 20,
     paddingVertical: 10,
-    backgroundColor: '#f4f5f6',
+    backgroundColor: '#F4F5F6',
     borderRadius: 10,
   },
   horizontialTextStyle: {

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {set_async_data} from '../Helper/AppHelper';
-// import {NativeAd150} from '../Helper/NativeAd150';
+import {NativeAd150} from '../Helper/NativeAd150';
 import analytics from '@react-native-firebase/analytics';
 const {width} = Dimensions.get('screen');
 import {lang as language} from '../../global';
@@ -212,9 +212,9 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
         </TouchableOpacity>
       </View>
 
-      {/* <View style={styles.bannerAd}>
+      <View style={styles.bannerAd}>
         <NativeAd150 adId={LANGUAGE_NATIVE_AD_ID}/>
-      </View> */}
+      </View>
     </SafeAreaView>
   );
 };

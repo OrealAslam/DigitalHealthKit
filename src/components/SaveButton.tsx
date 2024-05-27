@@ -31,17 +31,17 @@ export default function SaveButton(props: any) {
   const saveRecord = async () => {
     setloader(true);
     if (props.screenname == 'BloodPressure') {
-      if (
-        props.systolicpressure == '' ||
-        props.diastolicpressure == '' ||
-        props.pulse == ''
-      ) {
+      if (props.systolicpressure < props.diastolicpressure || props.systolicpressure == props.diastolicpressure) {
         Vibration.vibrate();
-        props.setmessage(true);
+        // props.setmessage(true);
         setloader(false);
+        ToastAndroid.showWithGravity(
+          'Systolic must be larger than Diastolic',
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER,
+        );
       } else {
         props.setmessage(false);
-        // props.setloader(true);
         let userID = await get_async_data('user_id');
         let choosenDate =
           props.selectedDate == '' ? props.today : props.selectedDate;
@@ -71,7 +71,6 @@ export default function SaveButton(props: any) {
           // props.return.navigate('ResultPageScreen');
         } else {
           props.setsave(true);
-          // props.return.navigate('ResultPageScreen');
         }
       }
     }

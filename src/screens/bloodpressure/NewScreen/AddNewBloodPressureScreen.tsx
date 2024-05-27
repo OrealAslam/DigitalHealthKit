@@ -18,9 +18,11 @@ import {
 } from '../../../Helper/AppHelper';
 import {lang} from '../../../../global';
 import LineChartAdComponent from '../components/LineChartAdComponent';
+import { NativeAd150 } from '../../../Helper/NativeAd150';
 import Chart from '../components/Chart';
 import PieChartAdComponent from '../components/PieChartAdComponent';
 import PieChartComponent from '../components/PieChartComponent';
+import { NATIVE_AD_ID_ONE } from '../../../Helper/AdManager';
 const {width, height} = Dimensions.get('window');
 
 const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
@@ -169,6 +171,9 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
         <View style={styles.graphContainer}>
           <Chart />
           <View style={styles.clr}></View>
+          <View style={styles.NativeAd}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
+          </View>
           <PieChartComponent />
           <View style={[styles.clr, {marginBottom: 40}]}></View>
         </View>
@@ -273,6 +278,13 @@ const styles = StyleSheet.create({
   addIcon: {
     width: 65.28,
     height: 65.28,
+  },
+  NativeAd: {
+    width: width * 0.86,
+    height: undefined,
+    backgroundColor: `rgba(0,0,0,0.3)`,
+    alignSelf: 'center',
+    marginBottom: 15,
   },
 });
 export default AddNewBloodPressureScreen;

@@ -124,9 +124,9 @@ const DashboardContent = (props: any) => {
         </ImageBackground>
       </TouchableOpacity>
 
-      {/* <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+      <View style={[styles.nativeContainer, {marginLeft: 10}]}>
         <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
-      </View> */}
+      </View>
 
       <View style={styles.multipleCardContainer}>
         <ImageBackground

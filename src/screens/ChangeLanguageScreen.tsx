@@ -9,7 +9,7 @@ import {
   BackHandler,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-// import {NativeAd150} from '../Helper/NativeAd150';
+import {NativeAd150} from '../Helper/NativeAd150';
 import {set_async_data} from '../Helper/AppHelper';
 import {lang} from '../../global';
 import { LANGUAGE_NATIVE_AD_ID } from '../Helper/AdManager';
@@ -105,9 +105,9 @@ const ChangeLanguageScreen = ({navigation}: {navigation: any}) => {
       </View>
 
       <View style={styles.languageContainer}>{displayLanguages()}</View>
-      {/* <View style={styles.bannerAd}>
+      <View style={styles.bannerAd}>
         <NativeAd150 adId={LANGUAGE_NATIVE_AD_ID}/>
-      </View> */}
+      </View>
     </SafeAreaView>
   );
 };

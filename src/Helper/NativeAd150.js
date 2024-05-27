@@ -1,5 +1,11 @@
-import React, {useRef, useState, useEffect} from 'react';
-import {Text, View} from 'react-native';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {
+  ActivityIndicator,
+  DeviceEventEmitter,
+  Platform,
+  Text,
+  View,
+} from 'react-native';
 import NativeAdView, {
   AdvertiserView,
   CallToActionView,
@@ -8,35 +14,14 @@ import NativeAdView, {
   StarRatingView,
   StoreView,
   TaglineView,
-  ImageView,
-  AdBadge
+  AdBadge,
 } from 'react-native-admob-native-ads';
-import {createShimmerPlaceholder} from 'react-native-shimmer-placeholder';
-import LinearGradient from 'react-native-linear-gradient';
 
-const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
-
-export const NativeAd150 = React.memo((props) => {
+export const NativeAd150 = React.memo(props => {
   const nativeAdViewRef = useRef(NativeAdView);
-  const [visible, setvisible] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    // const adLoadedListener = nativeAdViewRef.current?._onAdLoaded( () => {
-    //   setVisible(true);
-    // });
-
-    setTimeout(() => {
-      setvisible(true);
-    }, 3000);
-
-    // Clean up event listener when component unmounts
-    // return () => {
-    //   adLoadedListener();
-    // };
-  }, []);
-
-  useEffect(() => {
-    // Load the native ad
+  React.useEffect(() => {
     nativeAdViewRef.current?.loadAd();
   }, []);
 
@@ -49,132 +34,125 @@ export const NativeAd150 = React.memo((props) => {
         alignSelf: 'center',
         alignItems: 'center',
         alignContent: 'center',
+        backgroundColor: 'transparent',
       }}
       adChoicesPlacement="topRight"
       mediaAspectRatio="any"
-      onAdFailedToLoad={async (e)=> {
-        console.log('ad load error', e);
-        await analytics().logEvent('native_ad_impression');
-      }}
-      onAdImpression={(e)=>{
-        console.log('Native Ad Impression created');
-      }}
+      onAdFailedToLoad={(e)=>console.log('Native Ad error', e)}
       videoOptions={{
         customControlsRequested: true,
       }}>
       <View
         style={{
           width: '100%',
-          height: 'auto',
-          padding: 10,
-          paddingBottom: 0,
-          backgroundColor: '#FFFFFF',
           alignItems: 'center',
-          alignSelf: 'center',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          borderRadius: 16,
+          backgroundColor: '#D3D2FF',
+          justifyContent: 'center',
+          borderRadius: 13,
+          padding: 10,
+          borderWidth: 0,
+          borderColor: '#C8C8C8',
         }}>
-        <AdBadge
+        <View
           style={{
-            width: 18,
-            height: 18,
-            borderWidth: 0,
-            borderTopLeftRadius: 6,
-            backgroundColor: '#7A3BB8'
-          }}
-          textStyle={{
-            fontSize: 10,
-            color: 'green',
-            color: '#fff',
-            alignSelf: 'center'
-          }}
-        />
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}></View>
 
         <View
           style={{
+            width: '100%',
             flexDirection: 'row',
-            justifyContent: 'space-around',
-            width: '98%',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            paddingHorizontal: 10,
           }}>
-          <View style={{width: '48%', paddingTop: 10}}>
-            <ShimmerPlaceholder
-              style={{width: '100%', height: 73}}
-              visible={visible}
-              shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
-              <ImageView
-                style={{
-                  width: '88%',
-                  alignSelf: 'center',
-                  height: 73,
-                  resizeMode: 'contain',
-                }}
-              />
-            </ShimmerPlaceholder>
-          </View>
-
           <View
             style={{
-              width: '48%',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
+              flexGrow: 1,
+              flexShrink: 1,
+              paddingHorizontal: 6,
             }}>
-            <ShimmerPlaceholder
-              visible={visible}
-              style={{width: '100%'}}
-              shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
-              <TaglineView
-                numberOfLines={2}
-                style={{
-                  fontSize: 10,
-                  width: '100%',
-                  color: '#404040',
-                }}
-              />
-            </ShimmerPlaceholder>
-
-            <ShimmerPlaceholder
-              visible={visible}
-              style={{width: '100%'}}
-              shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
-              <IconView style={{width: 22, height: 22, borderRadius: 15}} />
-            </ShimmerPlaceholder>
-          </View>
-        </View>
-
-        <View style={{width: '100%'}}>
-          <ShimmerPlaceholder
-            style={{
-              width: '100%',
-              minHeight: 45,
-              marginTop: 15,
-              borderRadius: 10,
-              marginBottom: 15,
-            }}
-            visible={visible}
-            shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
-            <CallToActionView
+            <HeadlineView
               style={{
-                minHeight: 45,
-                paddingHorizontal: 12,
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 246,
-                backgroundColor: '#7A3BB8',
-                borderRadius: 23,
-              }}
-              allCaps
-              textStyle={{
-                fontSize: 19,
-                flexWrap: 'wrap',
-                textAlign: 'center',
-                textTransform: 'capitalize',
-                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 14,
+                color: '#000',
               }}
             />
-          </ShimmerPlaceholder>
+            <TaglineView
+              numberOfLines={2}
+              style={{
+                fontSize: 11,
+              }}
+            />
+            <AdvertiserView
+              style={{
+                fontSize: 10,
+                color: 'gray',
+              }}
+            />
+
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                alignSelf: 'center',
+              }}>
+              <StoreView
+                style={{
+                  fontSize: 12,
+                }}
+              />
+              <StarRatingView
+                style={{
+                  width: 65,
+                  marginLeft: 10,
+                }}
+              />
+            </View>
+          </View>
         </View>
+        <IconView
+          style={{
+            width: 60,
+            height: 60,
+            margin: 5,
+          }}
+        />
+        <AdBadge
+          style={{
+            backgroundColor: '#3980FF',
+            width: 19,
+            height: 19,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderBottomRightRadius: 9,
+            borderWidth: 0
+          }}
+          textStyle={{color: '#fff'}}
+        />
+        <CallToActionView
+          style={{
+            minHeight: 45,
+            paddingHorizontal: 12,
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: 250,
+            backgroundColor: '#7A3BB8',
+            borderRadius: 10,
+          }}
+          allCaps
+          textStyle={{
+            fontSize: 14,
+            flexWrap: 'wrap',
+            textAlign: 'center',
+            color: '#ffffff',
+          }}
+        />
       </View>
     </NativeAdView>
   );

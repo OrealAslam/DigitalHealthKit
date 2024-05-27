@@ -18,6 +18,7 @@ import Chart from '../components/Chart';
 import PieChartAdComponent from '../components/PieChartAdComponent';
 import PieChartComponent from '../components/PieChartComponent';
 import {NativeAd150} from '../../../Helper/NativeAd150';
+import { NATIVE_AD_ID_ONE } from '../../../Helper/AdManager';
 const {width, height} = Dimensions.get('window');
 
 const AddNewBloodSugarScreen = ({navigation}: {navigation: any}) => {
@@ -142,7 +143,7 @@ const AddNewBloodSugarScreen = ({navigation}: {navigation: any}) => {
           </View>
           <View style={styles.clr}></View>
           <View style={styles.NativeAd}>
-            <NativeAd150 />
+            <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
           </View>
 
           <PieChartComponent />

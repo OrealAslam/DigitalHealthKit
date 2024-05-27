@@ -75,7 +75,7 @@ function Chart(props: any) {
           ticks: {stroke: 'transparent', size: 28},
           tickLabels: {fontSize: 10, padding: 0},
         }}
-        offsetX={48}
+        offsetX={49}
         dependentAxis
       />
       <VictoryLine

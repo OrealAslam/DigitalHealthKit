@@ -16,9 +16,9 @@ import PieChartAdComponent from './components/PieChartAdComponent';
 import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../../global';
 import PageHeader from './components/PageHeader';
-// import {NativeAd150} from '../../Helper/NativeAd150';
+import {NativeAd150} from '../../Helper/NativeAd150';
 import DisplayRewardedAd from '../../components/DisplayRewardedAd';
-import { REWARED_AD_ID } from '../../Helper/AdManager';
+import {NATIVE_AD_ID_ONE, NATIVE_AD_ID_TWO, REWARED_AD_ID} from '../../Helper/AdManager';
 
 const {width} = Dimensions.get('window');
 const itemWidth = width - 80;
@@ -121,16 +121,18 @@ const TemperatureResultScreen = ({navigation}: {navigation: any}) => {
             showAd={showAd}
             loader={loader}
           />
-          {/* <View style={styles.NativeAd}>
-            <NativeAd150 />
-          </View> */}
+          <View style={styles.NativeAd}>
+            <NativeAd150 adId={NATIVE_AD_ID_ONE} />
+          </View>
           <PieChartAdComponent
             navigation={navigation}
             langstr={langstr}
             showAd={showAd}
             loader={loader}
           />
-
+          <View style={[styles.NativeAd, {marginTop: 20}]}>
+            <NativeAd150 adId={NATIVE_AD_ID_TWO} />
+          </View>
           <View style={styles.recomandation}>
             <Recomandations
               putScreen={'HomeScreen'}
@@ -139,7 +141,9 @@ const TemperatureResultScreen = ({navigation}: {navigation: any}) => {
           </View>
         </ScrollView>
       </View>
-      {loader && (<DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID}/>)}
+      {loader && (
+        <DisplayRewardedAd _continue={_continue} adId={REWARED_AD_ID} />
+      )}
     </>
   );
 };

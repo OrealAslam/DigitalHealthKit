@@ -12,7 +12,7 @@ import {useIsFocused} from '@react-navigation/native';
 import BloodPressureChart from './components/BloodPressureChart';
 import BloodSugarChart from './components/BloodSugarChart';
 import BMIChart from './components/BMIChart';
-// import {NativeAd150} from '../../../Helper/NativeAd150';
+import {NativeAd150} from '../../../Helper/NativeAd150';
 import {lang} from '../../../../global';
 import {set_async_data} from '../../../Helper/AppHelper';
 import { NATIVE_AD_ID_ONE, NATIVE_AD_ID_TWO, REWARED_AD_ID } from '../../../Helper/AdManager';
@@ -109,12 +109,12 @@ const TrackerScreen = (props: any) => {
             />
           </View>
 
-          {/* <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+          <View style={[styles.nativeContainer, {marginLeft: 10}]}>
             <NativeAd150 adId={NATIVE_AD_ID_ONE}/>
-          </View> */}
+          </View>
 
           {/* Blood Sugar */}
-          <View style={styles.box}>
+          <View style={[styles.box, {marginBottom: 20}]}>
             <View style={styles.head}>
               <Image
                 style={{width: 14, height: 17.95, marginRight: 8}}
@@ -132,9 +132,9 @@ const TrackerScreen = (props: any) => {
             />
           </View>
 
-          {/* <View style={[styles.nativeContainer, {marginLeft: 10}]}>
+          <View style={[styles.nativeContainer, {marginLeft: 10}]}>
             <NativeAd150 adId={NATIVE_AD_ID_TWO}/>
-          </View> */}
+          </View>
 
           {/* BMI Chart */}
           <View style={[styles.box, {marginBottom: '12%'}]}>

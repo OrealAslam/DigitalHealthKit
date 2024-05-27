@@ -81,7 +81,7 @@ function Chart(props: any) {
               marginBottom: 2,
             },
           ],
-          label: moment(chartData.label[index]).format('HH A'),
+          label: moment(chartData.label[index]).format('MM-DD'),
         };
         dataArr.push(stack);
       }
@@ -112,6 +112,8 @@ function Chart(props: any) {
         yAxisTextStyle={styles.labeltext}
         xAxisLabelTextStyle={styles.labeltext}
         dashGap={2}
+        animationDuration={2000}
+        isAnimated
       />
     </>
   );
