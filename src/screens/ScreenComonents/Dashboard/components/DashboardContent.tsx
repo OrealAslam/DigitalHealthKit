@@ -178,7 +178,7 @@ const DashboardContent = (props: any) => {
           <Text
             style={[
               styles.cardtitle,
-              {marginLeft: 20, position: 'absolute', bottom: 63, fontSize: 17},
+              {marginLeft: 20, position: 'absolute', bottom: 60, fontSize: 17},
             ]}>
             {cardtitlethree}
           </Text>

@@ -63,7 +63,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      crashlytics().log('App crashes');
+      // crashlytics().log('App crashes');
       let onboard = await get_async_data('on_board');
       let rate = await get_async_data('alreadyrate');
       if (rate && rate == 'rated') {

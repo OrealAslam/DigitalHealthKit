@@ -282,7 +282,6 @@ const styles = StyleSheet.create({
   NativeAd: {
     width: width * 0.86,
     height: undefined,
-    backgroundColor: `rgba(0,0,0,0.3)`,
     alignSelf: 'center',
     marginBottom: 15,
   },
