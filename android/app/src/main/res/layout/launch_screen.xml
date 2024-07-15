@@ -91,11 +91,10 @@
         app:layout_constraintVertical_bias="0.515" />
 
     <TextView
-        android:layout_width="225dp"
+        android:layout_width="255dp"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-
         android:text="@string/splash_description"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"

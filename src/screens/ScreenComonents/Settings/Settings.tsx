@@ -24,6 +24,7 @@ const Settings = (props:any) => {
   useEffect(() => {
     (async()=>{
       setselectedmenu('profile');
+      await analytics().logEvent('setting_tab');
       let lan = await lang();
       setlanguage(lan);
     })()
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     color: '#2E2E2E',
     fontSize: 20,
     fontWeight: '700',
-    marginLeft: 15,
+    marginLeft: 10,
   },
   adContainer: {
     width: '100%',

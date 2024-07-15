@@ -24,7 +24,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
 
   useEffect(() => {
     (async () => {
-      await analytics().logEvent('language_screen');
+      await analytics().logEvent('boarding_language_screen');
       let l = await language();
       setselectedLang(l);
       await set_async_data('line_chart_bp_ad', 'unseen');
@@ -72,7 +72,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
         </TouchableOpacity>
       </View>
 
-      <View style={{width: width, height: width + 20, marginTop: '5%'}}>
+      <View style={{width: width, height: width + 10, marginTop: '5%'}}>
         <ScrollView
           style={{
             width: width,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
     width: width,
     paddingHorizontal: 15,
     paddingVertical: 15,
-    marginTop: 20,
+    marginTop: 10,
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -408,7 +408,11 @@ const styles = StyleSheet.create({
     width: width * 0.88,
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 60,
+    bottom: 40,
+    backgroundColor: '#fff',
+    borderColor: '#EBEBEC',
+    borderWidth: 1,
+    borderRadius: 10
   },
 });
 export default LanguageScreen;

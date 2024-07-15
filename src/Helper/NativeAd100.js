@@ -56,7 +56,7 @@ export const NativeAd100 = React.memo(() => {
         alignSelf: 'center',
         alignItems: 'center',
         alignContent: 'center',
-        backgroundColor: 'transparent',
+        overflow: 'hidden'
       }}
       onNativeAdLoaded={load => {
         setvisible(true);
@@ -74,13 +74,12 @@ export const NativeAd100 = React.memo(() => {
       {shownative && (
         <View
           style={{
-            width: '100%',
+            width: '99%',
             flexDirection: 'column',
             justifyContent: 'space-around',
-            backgroundColor: '#F4F4FE',
+            borderRadius: 15,
             paddingTop: 10,
             paddingBottom: 10,
-            borderRadius: 20,
           }}>
           <View
             style={{
@@ -102,9 +101,9 @@ export const NativeAd100 = React.memo(() => {
                 shimmerColors={['#E1E5FF', '#D3D2FE', '#e6e6fe']}>
                 <ImageView
                   style={{
-                    width: '87%',
-                    height: 68,
-                    resizeMode: 'contain',
+                    width: '80%',
+                    height: 73,
+                    resizeMode: 'cover',
                     alignSelf: 'center',
                   }}
                 />
@@ -113,7 +112,7 @@ export const NativeAd100 = React.memo(() => {
 
             <View
               style={{
-                width: '40%',
+                width: '46%',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -126,7 +125,7 @@ export const NativeAd100 = React.memo(() => {
                   numberOfLines={2}
                   style={{
                     fontSize: 11,
-                    fontFamily: 'Roboto-Light',
+                    fontFamily: 'Montserrat-Light',
                     width: '100%',
                     color: '#6C6C6C',
                   }}
@@ -171,14 +170,15 @@ export const NativeAd100 = React.memo(() => {
           <View
             style={{
               width: '100%',
-              backgroundColor: '#298DA8',
+              backgroundColor: `rgba(0, 159,139, 0.7)`,
               alignSelf: 'center',
               borderRadius: 13,
               marginTop: 10,
+              // opacity: 0.7
             }}>
             <CallToActionView
               style={{
-                minWidth: '80%',
+                width: 300,
                 minHeight: 50,
                 paddingHorizontal: 12,
                 alignSelf: 'center',
@@ -186,12 +186,13 @@ export const NativeAd100 = React.memo(() => {
               }}
               allCaps
               textStyle={{
-                fontSize: 19,
+                fontSize: 18,
                 flexWrap: 'wrap',
                 textAlign: 'center',
                 textTransform: 'capitalize',
                 color: '#fff',
-                fontFamily: 'Roboto-Light',
+                fontFamily: 'Montserrat-SemiBold',
+                fontWeight: '600'
               }}
             />
           </View>

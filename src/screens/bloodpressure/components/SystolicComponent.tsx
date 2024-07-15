@@ -36,16 +36,15 @@ const SystolicComponent = (props: any) => {
             fontSize: 19,
             fontWeight: '800',
             fontStyle: 'normal',
-            fontFamily: 'Roboto-Medium',
+            fontFamily: 'Raleway-Medium',
           }}
           containerStyle={{
-            backgroundColor: '#491CFF',
-            // backgroundColor: '#04AA6D',
+            backgroundColor: '#009F8B',
             borderRadius: 12,
             width: itemWidth,
           }}
           selectedIndicatorStyle={{
-            backgroundColor: '#5D92F0',
+            backgroundColor: '#00b39b',
             width: '90%',
             alignSelf: 'center',
             justifyContent: 'center',
@@ -57,12 +56,12 @@ const SystolicComponent = (props: any) => {
           style={{
             color: '#2A2A2E',
             fontSize: 16,
-            fontWeight: '600',
+            fontFamily: 'Montserrat-Bold',
             marginTop: 5,
           }}>
           {props.langstr?.main.systolic}
         </Text>
-        <Text style={{color: '#9F9F9F',fontSize:12}}>mmHg</Text>
+        <Text style={{color: '#9F9F9F',fontSize:12,fontFamily: 'Raleway-Medium',}}>mmHg</Text>
       </View>
 
       <View
@@ -81,16 +80,15 @@ const SystolicComponent = (props: any) => {
             fontSize: 19,
             fontWeight: '800',
             fontStyle: 'normal',
-            fontFamily: 'Roboto-Medium',
+            fontFamily: 'Raleway-Medium',
           }}
           containerStyle={{
-            backgroundColor: '#491CFF',
-            // backgroundColor: '#04AA6D',
+            backgroundColor: '#009F8B',
             borderRadius: 12,
             width: itemWidth,
           }}
           selectedIndicatorStyle={{
-            backgroundColor: '#5D92F0',
+            backgroundColor: '#00b39b',
             width: '90%',
             alignSelf: 'center',
             justifyContent: 'center',
@@ -102,12 +100,12 @@ const SystolicComponent = (props: any) => {
           style={{
             color: '#2A2A2E',
             fontSize: 16,
-            fontWeight: '600',
+            fontFamily: 'Montserrat-Bold',
             marginTop: 5,
           }}>
           {props.langstr?.main.diastolic}
         </Text>
-        <Text style={{color: '#9F9F9F',fontSize:12}}>mmHg</Text>
+        <Text style={{color: '#9F9F9F',fontSize:12,fontFamily: 'Raleway-Medium',}}>mmHg</Text>
       </View>
 
       <View
@@ -124,17 +122,15 @@ const SystolicComponent = (props: any) => {
           itemTextStyle={{
             color: '#FFFFFF',
             fontSize: 19,
-            fontWeight: '800',
-            fontStyle: 'normal',
+            fontFamily: 'Montserrat-Bold',
           }}
           containerStyle={{
-            backgroundColor: '#491CFF',
-            // backgroundColor: '#04AA6D',
+            backgroundColor: '#009F8B',
             borderRadius: 12,
             width: itemWidth,
           }}
           selectedIndicatorStyle={{
-            backgroundColor: '#5D92F0',
+            backgroundColor: '#00b39b',
             width: '90%',
             alignSelf: 'center',
             justifyContent: 'center',
@@ -146,12 +142,12 @@ const SystolicComponent = (props: any) => {
           style={{
             color: '#2A2A2E',
             fontSize: 16,
-            fontWeight: '600',
+            fontFamily: 'Montserrat-Bold',
             marginTop: 5,
           }}>
           {props.langstr?.main.pulse}
         </Text>
-        <Text style={{color: '#9F9F9F',fontSize:12}}>BPM</Text>
+        <Text style={{color: '#9F9F9F',fontSize:12,fontFamily: 'Raleway-Medium'}}>BPM</Text>
       </View>
     </View>
   );

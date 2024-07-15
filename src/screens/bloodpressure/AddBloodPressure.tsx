@@ -112,7 +112,7 @@ export default function AddBloodPressure({navigation}: {navigation: any}) {
   useEffect(() => {
     (async () => {
       try {
-        await analytics().logEvent('add_bp');
+        await analytics().logEvent('add_bp_screen');
         let lan = await lang();
         setlanguage(lan);
       } catch (e) {

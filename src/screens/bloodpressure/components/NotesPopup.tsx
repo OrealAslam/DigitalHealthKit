@@ -28,7 +28,7 @@ const NotesPopup = (props: any) => {
           key={index}
           style={[
             styles.button,
-            selectedopt == item ? {backgroundColor: '#5F45FE'} : {},
+            selectedopt == item ? {backgroundColor: '#009F8B'} : {},
           ]}
           onPress={() => setselectedopt(item)}>
           <Text
@@ -61,7 +61,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'After Meal' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'After Meal' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('After Meal')}>
             <Text
@@ -76,7 +76,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'Before Meal' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'Before Meal' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('Before Meal')}>
             <Text
@@ -91,7 +91,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'Medication' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'Medication' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('Medication')}>
             <Text
@@ -106,7 +106,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'Sitting' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'Sitting' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('Sitting')}>
             <Text
@@ -121,7 +121,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'Peroid' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'Peroid' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('Peroid')}>
             <Text
@@ -136,7 +136,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'Walking' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'Walking' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('Walking')}>
             <Text
@@ -151,7 +151,7 @@ const NotesPopup = (props: any) => {
           <TouchableOpacity
             style={[
               styles.button,
-              selectedopt == 'Lying' ? {backgroundColor: '#5F45FE'} : {},
+              selectedopt == 'Lying' ? {backgroundColor: '#009F8B'} : {},
             ]}
             onPress={() => setselectedopt('Lying')}>
             <Text
@@ -171,7 +171,7 @@ const NotesPopup = (props: any) => {
             <Text
               style={{
                 textAlign: 'center',
-                fontWeight: '500',
+                fontFamily: 'Raleway-Medium',
                 color: '#5B5B5B',
               }}>
               {props.langstr.main.cancel}
@@ -182,9 +182,9 @@ const NotesPopup = (props: any) => {
               props.setnote(selectedopt);
               props.setshowremarksmodal(false);
             }}
-            style={[styles.bottomButton, {backgroundColor: '#5F45FE'}]}>
+            style={[styles.bottomButton, {backgroundColor: '#009F8B'}]}>
             <Text
-              style={{textAlign: 'center', color: '#fff', fontWeight: '500'}}>
+              style={{textAlign: 'center', color: '#fff', fontFamily: 'Raleway-Medium',}}>
               {props.langstr.main.okay}
             </Text>
           </TouchableOpacity>
@@ -243,6 +243,7 @@ const styles = StyleSheet.create({
   btnText: {
     textAlign: 'center',
     color: '#5B5B5B',
+    fontFamily: 'Raleway-Medium',
     fontSize: 16,
   },
   buttonContainer: {

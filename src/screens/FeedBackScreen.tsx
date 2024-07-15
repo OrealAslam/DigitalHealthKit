@@ -14,7 +14,7 @@ import analytics from '@react-native-firebase/analytics';
 import {lang} from '../../global';
 import {useIsFocused} from '@react-navigation/native';
 const {width} = Dimensions.get('window');
-const ITEM_WIDTH = width - 80;
+const ITEM_WIDTH = width - 60;
 const RATIO = ITEM_WIDTH / 1256;
 
 const FeedBackScreen = ({navigation}: {navigation: any}) => {
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#5F45FE',
+    backgroundColor: `rgba(0, 159,139, 1)`,
+    borderRadius: 10,
     top: 20,
   },
   btntxt: {
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     width: width * 0.89,
     height: width * 1.25,
     borderWidth: 2,
-    borderColor: '#5F45FE',
+    borderColor: '#009F8B',
     borderRadius: 9,
     alignSelf: 'center',
   },

@@ -33,7 +33,7 @@ const ExitModel = (props: any) => {
 
           <TouchableOpacity
             style={{
-              backgroundColor: '#7A3BB8',
+              backgroundColor: '#009F8B',
               width: '45%',
               alignItems: 'center',
               paddingVertical: 10,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 18,
-    fontWeight: '800',
+    fontFamily: 'Montserrat-Bold',
     textAlign: 'center',
   },
   subheading: {
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     marginTop: 20,
+    fontFamily: 'Raleway-Medium',
   },
   btnContainer: {
     width: '88%',
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Montserrat-Bold',
     color: '#000'
   }
 });

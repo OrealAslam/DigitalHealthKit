@@ -74,7 +74,7 @@ const Recomandations = (props: any) => {
             <Text
               numberOfLines={2}
               ellipsizeMode="tail"
-              style={[styles.title, {maxWidth: '60%'}]}>
+              style={[styles.title, {maxWidth: '60%', fontFamily: 'Raleway-Regular'}]}>
               {str.recommended.heartDisease}
             </Text>
           </ImageBackground>
@@ -87,7 +87,7 @@ const Recomandations = (props: any) => {
             <Text
               numberOfLines={2}
               ellipsizeMode="tail"
-              style={[styles.title, {maxWidth: '60%'}]}>
+              style={[styles.title, {maxWidth: '60%',fontFamily: 'Raleway-Regular'}]}>
               {str.recommended.BloodGlucose}
             </Text>
           </ImageBackground>
@@ -104,7 +104,7 @@ const Recomandations = (props: any) => {
             <Text
               numberOfLines={2}
               ellipsizeMode="tail"
-              style={[styles.title, {maxWidth: '60%'}]}>
+              style={[styles.title, {maxWidth: '60%',fontFamily: 'Raleway-Regular'}]}>
               {str.recommended.heartDiseaseTypes}
             </Text>
           </ImageBackground>
@@ -116,7 +116,7 @@ const Recomandations = (props: any) => {
             alignSelf: 'center',
             width: btnWidth,
             height: 176 * btnRatio,
-            backgroundColor: '#5F45FE',
+            backgroundColor: '#009f8b',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 8,
@@ -124,7 +124,7 @@ const Recomandations = (props: any) => {
           <Text
             numberOfLines={1}
             ellipsizeMode="tail"
-            style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>
+            style={{color: '#fff', fontSize: 16, fontFamily: 'Raleway-ExtraBold'}}>
             {str.main.more}
           </Text>
         </TouchableOpacity>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#2E2E2E',
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: 'Raleway-ExtraBold',
     marginLeft: 10,
     marginVertical: 15,
   },

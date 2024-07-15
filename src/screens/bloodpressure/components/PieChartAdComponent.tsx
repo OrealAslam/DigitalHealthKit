@@ -47,7 +47,7 @@ const PieChartAdComponent = (props: any) => {
             style={[
               styles.btn,
               {
-                backgroundColor: '#5F45FE',
+                backgroundColor: '#009F8B',
                 marginBottom: 10,
                 borderRadius: 8,
                 justifyContent: 'center',
@@ -81,12 +81,12 @@ const PieChartAdComponent = (props: any) => {
               {
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#5F45FE',
+                backgroundColor: '#009F8B',
                 borderRadius: 6,
               },
             ]}
             onPress={() => props.showAd('pie')}>
-            <Text style={{color: '#fff', fontSize: 15, fontWeight: '500'}}>
+            <Text style={{color: '#fff', fontSize: 15, fontFamily: 'Raleway-Medium',}}>
               {props.langstr.main.unlock}
             </Text>
           </TouchableOpacity>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   btn: {width: btnWidth, height: 176 * btnRatio, alignSelf: 'center'},
   btnText: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     color: '#fff',
   },
   chartContainer: {

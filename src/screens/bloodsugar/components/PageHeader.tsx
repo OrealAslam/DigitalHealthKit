@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     color: '#2E2E2E',
     fontSize: 20,
     fontStyle: 'normal',
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 15,
   },
 });

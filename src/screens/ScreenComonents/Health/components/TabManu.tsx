@@ -42,7 +42,7 @@ const TabManu = (props: any) => {
         onPress={() => props.setcategory('bp')}
         style={[
           styles.button,
-          props.category == 'bp' ? {backgroundColor: '#725DF2'} : {},
+          props.category == 'bp' ? {backgroundColor: `rgba(0, 159,139, 0.7)`} : {},
         ]}>
         <Text
           numberOfLines={1}
@@ -56,7 +56,7 @@ const TabManu = (props: any) => {
         onPress={() => props.setcategory('bs')}
         style={[
           styles.button,
-          props.category == 'bs' ? {backgroundColor: '#725DF2'} : {},
+          props.category == 'bs' ? {backgroundColor: `rgba(0, 159,139, 0.7)`,} : {},
         ]}>
         <Text
           numberOfLines={1}
@@ -70,7 +70,7 @@ const TabManu = (props: any) => {
         onPress={() => props.setcategory('heart')}
         style={[
           styles.button,
-          props.category == 'heart' ? {backgroundColor: '#725DF2'} : {},
+          props.category == 'heart' ? {backgroundColor: `rgba(0, 159,139, 0.7)`} : {},
         ]}>
         <Text
           numberOfLines={1}

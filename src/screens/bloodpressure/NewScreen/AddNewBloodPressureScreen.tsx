@@ -23,6 +23,7 @@ import Chart from '../components/Chart';
 import PieChartAdComponent from '../components/PieChartAdComponent';
 import PieChartComponent from '../components/PieChartComponent';
 import { NATIVE_AD_ID_ONE } from '../../../Helper/AdManager';
+import analytics from '@react-native-firebase/analytics';
 const {width, height} = Dimensions.get('window');
 
 const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
@@ -58,6 +59,7 @@ const AddNewBloodPressureScreen = ({navigation}: {navigation: any}) => {
       try {
         let lan = await lang();
         const filter = await filter_report();
+        await analytics().logEvent('bp_new_screen');
         setlanguage(lan);
         setfilterdata(filter);
       } catch (e) {
@@ -280,9 +282,11 @@ const styles = StyleSheet.create({
     height: 65.28,
   },
   NativeAd: {
-    width: width * 0.86,
-    height: undefined,
+    width: width * 0.87,
     alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 2,
     marginBottom: 15,
   },
 });

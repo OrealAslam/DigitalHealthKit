@@ -3,10 +3,10 @@
 </resources> -->
 
 <resources>
-    <string name="app_name">Digital Health Bit</string>
+    <string name="app_name">Pulse Tracker:Blood Pressure</string>
     <string name="temp_string">25 C</string>
     <string name="partly_cloud">Partly Cloud</string>
-    <string name="appKaName">Digital Health Bit</string>
+    <string name="appKaName"> Pulse Tracker \n Blood Pressure</string>
     <string name="splash_description">Data Tracking and Analysis</string>
     <string name="splash_sub_description">This action may contain ads..</string>
 </resources>

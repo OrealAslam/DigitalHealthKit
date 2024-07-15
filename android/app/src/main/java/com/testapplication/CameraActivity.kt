@@ -110,11 +110,18 @@ class CameraActivity : AppCompatActivity() {
             try {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
-
+                val camera = cameraProvider.bindToLifecycle(
+                    this, cameraSelector
+                )
+                val cameraControl = camera.cameraControl
+                cameraControl.enableTorch(true)
                 // Bind use cases to camera
+//                cameraProvider.bindToLifecycle(
+//                    this, cameraSelector, preview, imageCapture, imageAnalyzer
+//                )
                 cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture, imageAnalyzer
-                )
+                ).cameraControl.enableTorch(true)
 
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
@@ -312,8 +319,9 @@ class CameraActivity : AppCompatActivity() {
                 )
 
                 val rgb = hexToRGB(hexColor)
-                Log.d(TAG, "analyze: isRed ==> " + isRed(rgb!!.first, rgb.second, rgb.third))
-                listener(isRed(rgb!!.first, rgb.second, rgb.third))
+                if (rgb != null) {
+                    listener(isRed(rgb.first, rgb.second, rgb.third))
+                }
 
                 lastAnalyzedTimestamp = currentTimestamp
 

@@ -136,7 +136,7 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
   useEffect(() => {
     (async () => {
       try {
-        await analytics().logEvent('add_blood_sugar');
+        await analytics().logEvent('add_blood_sugar_screen');
         let lan = await lang();
         setlanguage(lan);
       } catch (e) {
@@ -307,7 +307,7 @@ export default function AddBloodSugar({navigation}: {navigation: any}) {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontWeight: '700',
+                  fontFamily: 'Montserrat-Bold',
                   fontSize: 18,
                   color: '#2E2E2E',
                   marginVertical: 15,
@@ -399,7 +399,7 @@ const styles = StyleSheet.create({
   input: {
     color: '#2E2E2E',
     fontSize: 55,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     paddingHorizontal: 15,
   },
   icon: {

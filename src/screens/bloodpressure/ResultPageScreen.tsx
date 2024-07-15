@@ -193,7 +193,7 @@ const ResultPageScreen = ({navigation}: {navigation: any}) => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontWeight: '700',
+                  fontFamily: 'Montserrat-Bold',
                   fontSize: 18,
                   color: '#5F5F5F',
                   marginBottom: 15,
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     color: '#2E2E2E',
     fontSize: 20,
     fontStyle: 'normal',
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 15,
   },
   colouredBg: {
@@ -289,15 +289,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: '#2E2E2E',
     fontSize: 14,
+    fontFamily: 'Raleway-Medium',
   },
   NativeAd: {
     width: width * 0.87,
-    height: undefined,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 16,
-    marginBottom: 15,
     alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 2,
+    marginBottom: 15
   },
   recomandation: {
     width: width,

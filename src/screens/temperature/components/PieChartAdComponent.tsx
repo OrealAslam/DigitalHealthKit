@@ -45,7 +45,7 @@ const PieChartAdComponent = (props: any) => {
             <PieChartComponent />
           </View>
           <TouchableOpacity
-            style={[styles.btn, {backgroundColor: '#5F45FE', marginBottom: 10, borderRadius: 8, justifyContent: 'center', alignItems: 'center'}]}
+            style={[styles.btn, {backgroundColor: '#009F8B', marginBottom: 10, borderRadius: 8, justifyContent: 'center', alignItems: 'center'}]}
             onPress={() => {
               props.navigation.navigate('AdTemperature');
             }}>
@@ -73,12 +73,12 @@ const PieChartAdComponent = (props: any) => {
               {
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#5F45FE',
+                backgroundColor: '#009F8B',
                 borderRadius: 6,
               },
             ]}
             onPress={()=>props.showAd('pie')}>
-            <Text style={{color: '#fff', fontSize: 15, fontWeight: '500'}}>
+            <Text style={{color: '#fff', fontSize: 15,fontFamily: 'Raleway-Medium',}}>
               {props.langstr.main.unlock}
             </Text>
           </TouchableOpacity>
@@ -98,10 +98,11 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   NativeAd: {
-    width: 323,
-    height: 245,
-    backgroundColor: `rgba(0,0,0,0.3)`,
+    width: width * 0.87,
     alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 2,
   },
   imageContainer: {
     justifyContent: 'center',
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   btn: {width: btnWidth, height: 176 * btnRatio, alignSelf: 'center'},
   btnText: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     color: '#fff',
   },
   chartContainer: {

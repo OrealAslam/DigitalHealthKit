@@ -46,27 +46,7 @@ const Dashboard = (props: any) => {
       decelerationRate={'fast'}
       showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        {/* <Text style={styles.heading}>{langstr?.main.homeTitle}</Text> */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            alignContent: 'center',
-          }}>
-          <Text style={styles.heading}>{props.temperature} F</Text>
-          <Image
-            style={styles.cloudImg}
-            source={require('../../../assets/icons/cloud.png')}
-          />
-        </View>
-
-        <View>
-          <Image
-            style={{width: 34, height: 34}}
-            source={require('../../../assets/icons/reward.png')}
-          />
-        </View>
+        <Text style={styles.heading}>{langstr?.main.homeTitle}</Text>
       </View>
       <DashboardContent navigate={props.navigateScreen} />
       <Recomandations setselectedmenu={props.setselectedmenu} putScreen={''} />
@@ -77,7 +57,6 @@ const styles = StyleSheet.create({
   header: {
     width: width,
     padding: 10,
-    // paddingTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -85,19 +64,20 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#141417',
-    fontSize: 25,
-    fontWeight: '700',
-    left: '6%',
+    fontSize: 20,
+    left: '20%',
+    fontFamily: 'Montserrat-Bold'
   },
   cloudImg: {
     width: 30.51,
     height: 23,
-    bottom: '10%'
+    bottom: '10%',
   },
   mainContainer: {
+    backgroundColor: '#ffffff',
     maxHeight: height * 0.81,
     marginTop: 0,
-    paddingTop: 0
+    paddingTop: 0,
   },
 });
 export default Dashboard;

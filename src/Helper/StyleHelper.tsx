@@ -93,7 +93,7 @@ export const historyListStyle = StyleSheet.create({
     padding: 12,
   },
   description: {
-    fontFamily: 'Roboto-Medium',
+    fontFamily: 'Roboto Light',
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: 14,
@@ -178,7 +178,7 @@ export const historyListStyle = StyleSheet.create({
     color: '#515151',
     fontSize: 12,
     marginLeft: 30,
-    fontFamily: 'Roboto-Light',
+    fontFamily: 'Roboto Light',
     fontWeight: '600',
     top: 5
   },
@@ -198,27 +198,24 @@ export const addFormStyle = StyleSheet.create({
     flexDirection: 'row',
   },
   headerHeading: {
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Montserrat-Bold',
     fontStyle: 'normal',
-    fontWeight: '800',
     fontSize: 15,
     textTransform: 'capitalize',
     color: '#FFFFFF',
     alignSelf: 'center',
   },
   cancelBtn: {
-    fontFamily: 'Roboto-Light',
+    fontFamily: 'Montserrat-Bold',
     fontStyle: 'normal',
     fontSize: 14,
     textTransform: 'capitalize',
     color: '#FFFFFF',
-    fontWeight: '600',
     marginTop: 12,
     left: -17,
   },
   saveBtn: {
-    fontWeight: '600',
-    fontFamily: 'Roboto-Light',
+    fontFamily: 'Montserrat-Bold',
     fontStyle: 'normal',
     fontSize: 14,
     textTransform: 'capitalize',
@@ -242,9 +239,8 @@ export const addFormStyle = StyleSheet.create({
     marginTop: 20,
   },
   label: {
-    fontFamily: 'Roboto-Black',
+    fontFamily: 'Montserrat-Bold',
     fontStyle: 'normal',
-    fontWeight: '700',
     fontSize: 15,
     textTransform: 'capitalize',
     color: '#2E2E2E',
@@ -348,7 +344,7 @@ export const boardingScreenStyle = StyleSheet.create({
   headingText: {
     textAlign: 'center',
     fontSize: 22,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     color: '#588DB1',
   },
 
@@ -416,8 +412,7 @@ export const DailyStepsStyle = StyleSheet.create({
     color: '#343434',
     fontSize: 22,
     fontStyle: 'normal',
-    fontWeight: '700',
-    fontFamily: 'Roboto-Medium'
+    fontFamily: 'Montserrat-Bold',
   },
   column: {
     flexDirection: 'column',

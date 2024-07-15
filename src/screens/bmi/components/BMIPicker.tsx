@@ -45,12 +45,12 @@ const BMIPicker = (props: any) => {
             fontStyle: 'normal',
           }}
           containerStyle={{
-            backgroundColor: '#491CFF',
+            backgroundColor: '#009f8b',
             borderRadius: 12,
             width: itemWidth,
           }}
           selectedIndicatorStyle={{
-            backgroundColor: '#5D92F0',
+            backgroundColor: '#00ccb1',
             width: '90%',
             alignSelf: 'center',
             justifyContent: 'center',
@@ -90,13 +90,13 @@ const BMIPicker = (props: any) => {
             fontStyle: 'normal',
           }}
           containerStyle={{
-            backgroundColor: '#491CFF',
+            backgroundColor: '#009f8b',
             // backgroundColor: '#04AA6D',
             borderRadius: 12,
             width: itemWidth,
           }}
           selectedIndicatorStyle={{
-            backgroundColor: '#5D92F0',
+            backgroundColor: '#00ccb1',
             width: '90%',
             alignSelf: 'center',
             justifyContent: 'center',

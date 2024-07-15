@@ -54,6 +54,8 @@ export const translation = {
       bridgetext: 'Please add your record to unlock statistical information',
     },
     dashobard: {
+      cardCommit: 'Health Diary',
+      measure: 'Measure Now',
       recommended: 'Recommended Reading',
       bp: 'Blood Pressure',
       bs: 'Blood Sugar',
@@ -180,6 +182,8 @@ export const translation = {
         'Por favor, añade tu registro para desbloquear la información estadística.',
     },
     dashobard: {
+      cardCommit: 'Diario de Salud',
+      measure: 'Medir Ahora',
       recommended: 'Lectura Recomendada',
       bp: 'Presión Arterial',
       bs: 'Azúcar en la Sangre',
@@ -308,7 +312,9 @@ export const translation = {
         'Lütfen istatistiksel bilgileri açmak için kaydınızı ekleyin.',
     },
     dashobard: {
-      recommended: 'Önerilen Okuma',
+      cardCommit: 'Sağlık Günlüğü',
+      measure: 'Şimdi Ölç',
+      recommended: 'Sağlık Günlüğü',
       bp: 'Kan Basıncı',
       bs: 'Kan Şekeri',
       bmi: 'Vücut Kitle İndeksi',
@@ -435,6 +441,8 @@ export const translation = {
       bridgetext: 'يرجى إضافة سجلك لفتح المعلومات الإحصائية',
     },
     dashobard: {
+      cardCommit: 'مفكرة صحية',
+      measure: 'قِس الآن',
       recommended: 'القراءة الموصى بها',
       bp: 'ضغط الدم',
       bs: 'مستوى السكر في الدم',
@@ -560,6 +568,8 @@ export const translation = {
         'Bitte fügen Sie Ihren Datensatz hinzu, um statistische Informationen freizuschalten.',
     },
     dashobard: {
+      cardCommit: 'Gesundheitstagebuch',
+      measure: 'Jetzt Messen',
       recommended: 'Empfohlene Lektüre',
       bp: 'Blutdruck',
       bs: 'Blutzucker',
@@ -689,6 +699,8 @@ export const translation = {
         'Veuillez ajouter votre enregistrement pour débloquer les informations statistiques.',
     },
     dashobard: {
+      cardCommit: 'Journal de Santé',
+      measure: 'Mesurer Maintenant',
       recommended: 'Lecture recommandée',
       bp: 'Tension artérielle',
       bs: 'Taux de sucre dans le sang',
@@ -818,6 +830,8 @@ export const translation = {
         'Per favore, aggiungi il tuo record per sbloccare le informazioni statistiche.',
     },
     dashobard: {
+      cardCommit: 'Diario della Salute',
+      measure: 'Misura Ora',
       recommended: 'Lettura Consigliata',
       bp: 'Pressione Sanguigna',
       bs: 'Glicemia',
@@ -946,6 +960,8 @@ export const translation = {
         'Пожалуйста, добавьте свою запись, чтобы разблокировать статистическую информацию.',
     },
     dashobard: {
+      cardCommit: 'Дневник здоровья',
+      measure: 'Измерить сейчас',
       recommended: 'Рекомендуемые материалы',
       bp: 'Артериальное давление',
       bs: 'Уровень сахара в крови',
@@ -1074,7 +1090,9 @@ export const translation = {
         '"統計情報を解除するために、レコードを追加してください。" (Tōkei jōhō o kaijo suru tame ni, rekōdo o tsuikashite kudasai.)',
     },
     dashobard: {
+      cardCommit: '健康日記',
       recommended: 'おすすめの読み物',
+      measure: '今測定する',
       bp: '血圧',
       bs: '血糖値',
       bmi: 'BMI',
@@ -1198,7 +1216,9 @@ export const translation = {
       bridgetext: '통계 정보를 잠금 해제하려면 기록을 추가하세요',
     },
     dashobard: {
+      cardCommit: '건강 일기',
       recommended: '추천 읽기',
+      measure: '지금 측정하다',
       bp: '혈압',
       bs: '혈당',
       bmi: 'BMI',
@@ -1324,7 +1344,9 @@ export const translation = {
         'Harap tambahkan catatan Anda untuk membuka informasi statistik',
     },
     dashboard: {
+      cardCommit: 'Buku Harian Kesehatan',
       recommended: 'Bacaan yang Direkomendasikan',
+      measure: 'Ukur Sekarang',
       bp: 'Tekanan Darah',
       bs: 'Gula Darah',
       bmi: 'BMI',
@@ -1450,7 +1472,9 @@ export const translation = {
         'Mangyaring idagdag ang iyong rekord upang i-unlock ang impormasyon ng istatistika',
     },
     dashobard: {
+      cardCommit: 'Talaarawan ng Kalusugan',
       recommended: 'Inirekomendang Pagbasa',
+      measure: 'Sukatin Ngayon',
       bp: 'Presyon ng Dugo',
       bs: 'Asukal sa Dugo',
       bmi: 'BMI',
@@ -1577,7 +1601,9 @@ export const translation = {
       bridgetext: 'Vui lòng thêm bản ghi của bạn để mở khóa thông tin thống kê',
     },
     dashobard: {
+      cardCommit: 'Nhật ký sức khỏe',
       recommended: 'Đọc Đề Xuất',
+      measure: 'Đo bây giờ',
       bp: 'Huyết Áp',
       bs: 'Đường Huyết',
       bmi: 'BMI',
@@ -1703,7 +1729,9 @@ export const translation = {
         'Por favor, adicione seu registro para desbloquear informações estatísticas',
     },
     dashboard: {
+      cardCommit: 'Diário de Saúde',
       recommended: 'Leitura Recomendada',
+      measure: 'Medir Agora',
       bp: 'Pressão Arterial',
       bs: 'Nível de Açúcar no Sangue',
       bmi: 'IMC',
@@ -1830,7 +1858,9 @@ export const translation = {
       bridgetext: 'புள்ளிவிவர தகவல்களை திறக்க உங்கள் பதிவைச் சேர்க்கவும்',
     },
     dashobard: {
+      cardCommit: 'சுகாதார பதிவேடு',
       recommended: 'பரிந்துரைக்கப்பட்ட வாசிப்பு',
+      measure: 'இப்போது அளவிடுங்கள்',
       bp: 'இரத்த அழுத்தம்',
       bs: 'இரத்த சர்க்கரை',
       bmi: 'BMI',
@@ -1956,7 +1986,9 @@ export const translation = {
       bridgetext: 'សូមបន្ថែមការកត់ត្រារបស់អ្នកដើម្បីបើកការព័ត៌មានស្ថិតិ',
     },
     dashobard: {
+      cardCommit: 'កំណត់ហេតុសុខភាព',
       recommended: 'ការអានដែលបានណែនាំ',
+      measure: 'វាស់ឥឡូវនេះ',
       bp: 'សម្ពាធឈាម',
       bs: 'ស្ករក្នុងឈាម',
       bmi: 'BMI',
@@ -2081,7 +2113,9 @@ export const translation = {
       bridgetext: 'โปรดเพิ่มบันทึกของคุณเพื่อปลดล็อกข้อมูลสถิติ',
     },
     dashobard: {
+      cardCommit: 'บันทึกสุขภาพ',
       recommended: 'การอ่านที่แนะนำ',
+      measure: 'วัดตอนนี้',
       bp: 'ความดันโลหิต',
       bs: 'น้ำตาลในเลือด',
       bmi: 'BMI',

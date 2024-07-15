@@ -57,7 +57,7 @@ const ChangeLanguageScreen = ({navigation}: {navigation: any}) => {
           style={[
             styles.languageBox,
             selectedLang == item.key
-              ? {backgroundColor: '#725DF2'}
+              ? {backgroundColor: `rgba(0, 159,139, 0.7)`,}
               : {backgroundColor: '#EBEBEC'},
           ]}
           key={index}
@@ -116,7 +116,7 @@ const ChangeLanguageScreen = ({navigation}: {navigation: any}) => {
       <ScrollView style={{width: width, height: width, overflow: 'scroll'}}>
         <View style={styles.languageContainer}>{displayLanguages()}</View>
       </ScrollView>
-      <View style={styles.bannerAd}>
+      <View style={styles.nativeAd}>
         <NativeAd150 adId={LANGUAGE_NATIVE_AD_ID} />
       </View>
     </SafeAreaView>
@@ -163,11 +163,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
   },
-  bannerAd: {
-    width: width * 0.86,
-    height: undefined,
-    top: '15%',
+  nativeAd: {
+    width: width * 0.895,
     alignSelf: 'center',
+    backgroundColor: '#fff',
+    top: '8%',
+    elevation: 2,
+    borderRadius: 12,
   },
 });
 export default ChangeLanguageScreen;

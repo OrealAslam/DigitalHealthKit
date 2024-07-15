@@ -54,7 +54,6 @@ const HealthScreen = (props: any) => {
 
   useEffect(() => {
     setlangstr(language);
-    // settitle(language?.main.healthTitle);
   }, [language]);
 
   useEffect(() => {
@@ -73,7 +72,7 @@ const HealthScreen = (props: any) => {
   useEffect(() => {
     (async () => {
       try {
-        await analytics().logEvent('health_tab');
+        await analytics().logEvent('article_tab');
         let lan = await lang();
         setlanguage(lan);
         setselectedmenu('health');

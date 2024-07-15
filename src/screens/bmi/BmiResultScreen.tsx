@@ -121,6 +121,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
     navigation.navigate('BmiResultScreen');
   };
   const showAd = async (type: any) => {
+    await set_async_data('hide_ad', 'hide'); // purposly to hide tary ad
     setloader(true);
     if (type == 'line') {
       await set_async_data('line_chart_bmi_ad', 'seen');
@@ -154,7 +155,7 @@ const BmiResultScreen = ({navigation}: {navigation: any}) => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontWeight: '700',
+                  fontFamily: 'Montserrat-Bold',
                   fontSize: 18,
                   color: '#5F5F5F',
                   marginBottom: 15,
@@ -233,13 +234,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: '#2E2E2E',
     fontSize: 14,
+    fontFamily: 'Raleway-Medium',
   },
   NativeAd: {
     width: width * 0.86,
-    height: undefined,
-    backgroundColor: `rgba(0,0,0,0.3)`,
     alignSelf: 'center',
-    marginBottom: 10,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 2,
   },
   recomandation: {
     width: width,

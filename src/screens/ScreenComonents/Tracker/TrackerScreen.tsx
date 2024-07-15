@@ -53,12 +53,10 @@ const TrackerScreen = (props: any) => {
 
   useEffect(() => {
     (async () => {
-      console.log('creen focued again');
       let lan = await lang();
       setlanguage(lan);
       setselectedmenu('tracker');
     })();
-    console.log('focused again');
   }, [isFocused, rewardadseen]);
 
   useEffect(() => {
@@ -173,8 +171,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#F4F4FE',
   },
   nativeContainer: {
-    width: width * 0.90,
+    width: width * 0.91,
     alignSelf: 'center',
+    backgroundColor: '#fff',
+    elevation: 5,
+    borderRadius: 15,
   },
   header: {
     flexDirection: 'row',

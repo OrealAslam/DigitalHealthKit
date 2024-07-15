@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     width: btnWidth,
     height: 176 * btnRatio,
     alignSelf: 'center',
-    backgroundColor: '#5F45FE',
+    backgroundColor: `rgba(0, 159,139, 1)`,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',

@@ -70,6 +70,7 @@ const DateTimeComponent = (props: any) => {
               marginLeft: 10,
               alignSelf: 'center',
               fontSize: 14,
+              fontFamily: 'Raleway-Medium',
               left: 5,
             }}>
             {props.selectedDate == ''

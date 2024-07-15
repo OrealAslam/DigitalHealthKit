@@ -17,12 +17,13 @@ import {
 } from '../../../../Helper/AppHelper';
 import {useIsFocused} from '@react-navigation/native';
 import {get_chart_data} from '../../../../Helper/AppHelper';
-import {
-  VictoryChart,
-  VictoryLine,
-  VictoryScatter,
-  VictoryAxis,
-} from 'victory-native';
+// import {
+//   VictoryChart,
+//   VictoryLine,
+//   VictoryScatter,
+//   VictoryAxis,
+// } from 'victory-native';
+import {LineChart} from 'react-native-gifted-charts';
 import moment from 'moment';
 const {width} = Dimensions.get('window');
 
@@ -37,13 +38,14 @@ const BloodSugarChart = (props: any) => {
   const [adSeen, setadSeen] = useState('');
   const [btnType, setbtnType] = useState('Add');
 
-  const [dataArray, setdataArray] = useState([{y: 0, x: '0'}]);
+  const [dataArray, setdataArray] = useState([{value: 0, label: '0'}]);
 
   useEffect(() => {
     (async () => {
       try {
         let adSeen = await get_async_data('line_chart_bs_ad');
         let sugarChart = await get_chart_data('sugar');
+        console.log(sugarChart);
         if (sugarChart.data.length < 1) {
           let date = moment().format('YYYY-MM-DD H:mm:ss');
           useApiData({
@@ -88,15 +90,15 @@ const BloodSugarChart = (props: any) => {
     for (let i = 0; i < length; i++) {
       const dateObj = new Date(data.label[i]);
       let desiredObject = {
-        y: parseInt(data.data[i]),
-        x: `${dateObj.getDate()} - ${dateObj.getMonth() + 1}`,
+        value: parseInt(data.data[i]),
+        label: `${dateObj.getDate()} - ${dateObj.getMonth() + 1}`,
       };
       array.push(desiredObject);
     }
     if (length > 1) {
       setdataArray(array.reverse());
     } else {
-      console.log(array);
+      console.log('data array', array);
       setdataArray(array);
     }
   };
@@ -105,7 +107,7 @@ const BloodSugarChart = (props: any) => {
       {adSeen == 'seen' ? (
         <>
           <View style={styles.chartContainer}>
-            <VictoryChart
+            {/* <VictoryChart
               polar={false}
               width={width - 35}
               height={210}
@@ -149,7 +151,25 @@ const BloodSugarChart = (props: any) => {
                   },
                 }}
               />
-            </VictoryChart>
+            </VictoryChart> */}
+            <LineChart
+              spacing={55}
+              data={dataArray}
+              adjustToWidth={true}
+              width={310}
+              yAxisColor="#0BA5A4"
+              xAxisColor="#0BA5A4"
+              color="#0BA5A4"
+              isAnimated
+              onDataChangeAnimationDuration={400}
+              initialSpacing={20}
+              dashGap={2}
+              focusEnabled
+              thickness={2}
+              dataPointsColor={'#00b8e6'}
+              backgroundColor={'#F4F5F6'}
+              xAxisLabelTextStyle={{fontSize: 10}}
+            />
           </View>
           <TouchableOpacity
             style={styles.btn}
@@ -229,7 +249,7 @@ const styles = StyleSheet.create({
     width: btnWidth,
     height: 176 * btnRatio,
     alignSelf: 'center',
-    backgroundColor: '#5F45FE',
+    backgroundColor: `rgba(0, 159,139, 0.7)`,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',

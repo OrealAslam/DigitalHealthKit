@@ -13,32 +13,32 @@ import analytics from '@react-native-firebase/analytics';
 
 // LIVE APPID: ca-app-pub-3781511156022357~6826036258
 // LIVE AD ID's
-export const APPOPEN_AD_ID = 'ca-app-pub-3781511156022357/6653773722';
-export const BANNER_AD_ID = 'ca-app-pub-3781511156022357/6941586328';
-export const INTERSITIAL_AD_ID = 'ca-app-pub-3781511156022357/9111617346'; // save & graph ad id 
-export const INTERSITIAL_AD_ID_OLD = 'ca-app-pub-3781511156022357/6542093089'; // close
-export const REWARED_AD_ID = 'ca-app-pub-3781511156022357/8209433946';
-export const REWARED_INTERSTITIAL_AD_ID = 'ca-app-pub-3781511156022357/9359828115';
-export const NATIVE_AD_ID = 'ca-app-pub-3781511156022357/3002341317';
+// export const APPOPEN_AD_ID = 'ca-app-pub-3781511156022357/6653773722';
+// export const BANNER_AD_ID = 'ca-app-pub-3781511156022357/6941586328';
+// export const INTERSITIAL_AD_ID = 'ca-app-pub-3781511156022357/9111617346'; // save & graph ad id 
+// export const INTERSITIAL_AD_ID_OLD = 'ca-app-pub-3781511156022357/6542093089'; // close
+// export const REWARED_AD_ID = 'ca-app-pub-3781511156022357/8209433946';
+// export const REWARED_INTERSTITIAL_AD_ID = 'ca-app-pub-3781511156022357/9359828115';
+// export const NATIVE_AD_ID = 'ca-app-pub-3781511156022357/3002341317';
 
-export const LANGUAGE_NATIVE_AD_ID = 'ca-app-pub-3781511156022357/7644102324';
-export const NATIVE_AD_ID_ONE = 'ca-app-pub-3781511156022357/2064742085';
-export const NATIVE_AD_ID_TWO = 'ca-app-pub-3781511156022357/3245460808';
-export const ARTICLE_AD_ID = 'ca-app-pub-3781511156022357/1918322292';
+// export const LANGUAGE_NATIVE_AD_ID = 'ca-app-pub-3781511156022357/7644102324';
+// export const NATIVE_AD_ID_ONE = 'ca-app-pub-3781511156022357/2064742085';
+// export const NATIVE_AD_ID_TWO = 'ca-app-pub-3781511156022357/3245460808';
+// export const ARTICLE_AD_ID = 'ca-app-pub-3781511156022357/1918322292';
 
 // TEST AD ID's
-// export const APPOPEN_AD_ID = 'ca-app-pub-3940256099942544/9257395921';
-// export const BANNER_AD_ID = 'ca-app-pub-3940256099942544/6300978111';
-// export const REWARED_AD_ID = 'ca-app-pub-3781511156022357/8209433946';
-// export const REWARED_INTERSTITIAL_AD_ID = 'ca-app-pub-3940256099942544/5354046379';
-// export const NATIVE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
-// export const INTERSITIAL_AD_ID = 'ca-app-pub-3940256099942544/1033173712';
-// export const INTERSITIAL_AD_ID_OLD = 'ca-app-pub-3940256099942544/1033173712';
+export const APPOPEN_AD_ID = 'ca-app-pub-3940256099942544/9257395921';
+export const BANNER_AD_ID = 'ca-app-pub-3940256099942544/6300978111';
+export const REWARED_AD_ID = 'ca-app-pub-3781511156022357/8209433946';
+export const REWARED_INTERSTITIAL_AD_ID = 'ca-app-pub-3940256099942544/5354046379';
+export const NATIVE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
+export const INTERSITIAL_AD_ID = 'ca-app-pub-3940256099942544/1033173712';
+export const INTERSITIAL_AD_ID_OLD = 'ca-app-pub-3940256099942544/1033173712';
 
-// export const LANGUAGE_NATIVE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
-// export const NATIVE_AD_ID_ONE = 'ca-app-pub-3940256099942544/2247696110';
-// export const NATIVE_AD_ID_TWO = 'ca-app-pub-3940256099942544/2247696110';
-// export const ARTICLE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
+export const LANGUAGE_NATIVE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
+export const NATIVE_AD_ID_ONE = 'ca-app-pub-3940256099942544/2247696110';
+export const NATIVE_AD_ID_TWO = 'ca-app-pub-3940256099942544/2247696110';
+export const ARTICLE_AD_ID = 'ca-app-pub-3940256099942544/2247696110';
 
 export var AD_LOADED = false;
 // Initialize

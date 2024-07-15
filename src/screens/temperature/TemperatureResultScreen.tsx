@@ -49,7 +49,7 @@ const TemperatureResultScreen = ({navigation}: {navigation: any}) => {
   useEffect(() => {
     (async () => {
       try {
-        await analytics().logEvent('bs_result_screen');
+        await analytics().logEvent('temperature_result_screen');
         let lan = await lang();
         setlanguage(lan);
         let response = await get_report(REPORT_TYPES.temperature);
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     color: '#2E2E2E',
     fontSize: 20,
     fontStyle: 'normal',
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 15,
   },
   colouredBg: {
@@ -181,11 +181,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   NativeAd: {
-    width: width * 0.86,
-    height: undefined,
-    backgroundColor: `rgba(0,0,0,0.3)`,
+    width: width * 0.87,
     alignSelf: 'center',
-    marginBottom: 15,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 2,
   },
   recomandation: {
     width: width,

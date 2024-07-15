@@ -102,8 +102,12 @@ const DetailScreen = ({navigation}: {navigation: any}) => {
           language?.article.articledata?.bp.questions[quesid]
             .contentDescription,
         );
-        setreferenceLink(language?.article.articledata?.bp.questions[quesid].referenceLink);
-        setreferenceTitle(language?.article.articledata?.bp.questions[quesid].referenceTitle);
+        setreferenceLink(
+          language?.article.articledata?.bp.questions[quesid].referenceLink,
+        );
+        setreferenceTitle(
+          language?.article.articledata?.bp.questions[quesid].referenceTitle,
+        );
       }
     }
     if (category == 'heart') {
@@ -122,8 +126,12 @@ const DetailScreen = ({navigation}: {navigation: any}) => {
           language?.article.articledata?.heart.questions[quesid]
             .contentDescription,
         );
-        setreferenceLink(language?.article.articledata?.heart.questions[quesid].referenceLink);
-        setreferenceTitle(language?.article.articledata?.heart.questions[quesid].referenceTitle);
+        setreferenceLink(
+          language?.article.articledata?.heart.questions[quesid].referenceLink,
+        );
+        setreferenceTitle(
+          language?.article.articledata?.heart.questions[quesid].referenceTitle,
+        );
       }
     }
     if (category == 'bs') {
@@ -142,8 +150,12 @@ const DetailScreen = ({navigation}: {navigation: any}) => {
           language?.article.articledata?.bs.questions[quesid]
             .contentDescription,
         );
-        setreferenceLink(language?.article.articledata?.bs.questions[quesid].referenceLink);
-        setreferenceTitle(language?.article.articledata?.bs.questions[quesid].referenceTitle);
+        setreferenceLink(
+          language?.article.articledata?.bs.questions[quesid].referenceLink,
+        );
+        setreferenceTitle(
+          language?.article.articledata?.bs.questions[quesid].referenceTitle,
+        );
       }
     }
   }, [quesid, category, language]);
@@ -241,14 +253,16 @@ const DetailScreen = ({navigation}: {navigation: any}) => {
           ref={scrollRef}
           style={{paddingBottom: 20, maxHeight: '75%'}}
           showsVerticalScrollIndicator={false}>
-          <NativeAd150 adId={ARTICLE_AD_ID} />
+          <View style={styles.nativeContainer}>
+            <NativeAd150 adId={ARTICLE_AD_ID} />
+          </View>
           <Text style={styles.description}>{subtitle}</Text>
           <View style={styles.subDescriptionContainer}>
             {showSubDescription()}
 
             <View style={styles.reference}>
               <Text style={styles.refTitle}>{referenceTitle}</Text>
-              <TouchableOpacity onPress={()=>Linking.openURL(referenceLink)}>
+              <TouchableOpacity onPress={() => Linking.openURL(referenceLink)}>
                 <Text style={styles.url}>{referenceLink}</Text>
               </TouchableOpacity>
             </View>
@@ -261,7 +275,7 @@ const DetailScreen = ({navigation}: {navigation: any}) => {
               marginVertical: 20,
               width: btnWidth,
               height: 176 * btnRatio,
-              backgroundColor: '#5F45FE',
+              backgroundColor: `rgba(0, 159,139, 0.7)`,
               alignItems: 'center',
               justifyContent: 'center',
               borderRadius: 10,
@@ -279,6 +293,13 @@ const styles = StyleSheet.create({
     height: width * 0.3,
     flexDirection: 'row',
     zIndex: 1,
+  },
+  nativeContainer: {
+    width: width * 0.895,
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 3,
   },
   background: {
     width: width,
@@ -378,18 +399,18 @@ const styles = StyleSheet.create({
   reference: {
     marginTop: 10,
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   refTitle: {
     color: '#fff',
     fontSize: 15,
     lineHeight: 20,
-    marginBottom: 10
+    marginBottom: 10,
   },
   url: {
     fontSize: 12,
     color: '#0000e6',
-    textDecorationLine: 'underline'
-  }
+    textDecorationLine: 'underline',
+  },
 });
 export default DetailScreen;

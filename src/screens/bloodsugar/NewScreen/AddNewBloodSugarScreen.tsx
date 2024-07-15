@@ -200,9 +200,10 @@ const styles = StyleSheet.create({
   },
   NativeAd: {
     width: width * 0.86,
-    height: undefined,
     alignSelf: 'center',
-    marginBottom: 15,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 2,
   },
   row: {
     width: width * 0.85,

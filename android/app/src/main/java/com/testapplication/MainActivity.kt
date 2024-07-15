@@ -12,7 +12,7 @@ import com.google.android.gms.ads.MobileAds // Import this for Native Ad
 class MainActivity : ReactActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         SplashScreen.show(this)  // Show the splash screen
-        super.onCreate(savedInstanceState)
+        super.onCreate(null)
         MobileAds.initialize(this) { }
     }
   /**

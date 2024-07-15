@@ -38,7 +38,7 @@ export const NativeAd150 = React.memo(props => {
       }}
       adChoicesPlacement="topRight"
       mediaAspectRatio="any"
-      onAdFailedToLoad={(e)=>console.log('Native Ad error', e)}
+      onAdFailedToLoad={e => console.log('Native Ad error', e)}
       videoOptions={{
         customControlsRequested: true,
       }}>
@@ -46,12 +46,9 @@ export const NativeAd150 = React.memo(props => {
         style={{
           width: '100%',
           alignItems: 'center',
-          backgroundColor: '#D3D2FF',
           justifyContent: 'center',
           borderRadius: 13,
           padding: 10,
-          borderWidth: 0,
-          borderColor: '#C8C8C8',
         }}>
         <View
           style={{
@@ -78,15 +75,16 @@ export const NativeAd150 = React.memo(props => {
             }}>
             <HeadlineView
               style={{
-                fontWeight: 'bold',
-                fontSize: 14,
+                fontWeight: '800',
+                fontSize: 18,
                 color: '#000',
+                textAlign: 'center',
               }}
             />
             <TaglineView
               numberOfLines={2}
               style={{
-                fontSize: 11,
+                fontSize: 12,
               }}
             />
             <AdvertiserView
@@ -95,64 +93,56 @@ export const NativeAd150 = React.memo(props => {
                 color: 'gray',
               }}
             />
-
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <StoreView
-                style={{
-                  fontSize: 12,
-                }}
-              />
-              <StarRatingView
-                style={{
-                  width: 65,
-                  marginLeft: 10,
-                }}
-              />
-            </View>
           </View>
         </View>
         <IconView
           style={{
             width: 60,
             height: 60,
-            margin: 5,
+            marginVertical: 20,
           }}
         />
         <AdBadge
           style={{
             backgroundColor: '#3980FF',
-            width: 19,
+            width: 21,
             height: 19,
             alignItems: 'center',
             justifyContent: 'center',
-            borderBottomRightRadius: 9,
-            borderWidth: 0
+            marginLeft: '10%',
+            borderBottomLeftRadius: 7,
+            borderBottomRightRadius: 7,
+            borderWidth: 0,
           }}
           textStyle={{color: '#fff'}}
         />
-        <CallToActionView
+        <View
           style={{
-            minHeight: 45,
-            paddingHorizontal: 12,
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: 250,
-            backgroundColor: '#7A3BB8',
-            borderRadius: 10,
-          }}
-          allCaps
-          textStyle={{
-            fontSize: 14,
-            flexWrap: 'wrap',
-            textAlign: 'center',
-            color: '#ffffff',
-          }}
-        />
+            width: '100%',
+            alignSelf: 'center',
+            borderRadius: 13,
+            marginTop: 10,
+            backgroundColor: `rgba(0, 159,139, 0.7)`,
+          }}>
+          <CallToActionView
+            style={{
+              width: 300,
+              minHeight: 45,
+              paddingHorizontal: 12,
+              alignSelf: 'center',
+              backgroundColor: 'transparent',
+            }}
+            allCaps
+            textStyle={{
+              fontSize: 19,
+              flexWrap: 'wrap',
+              textAlign: 'center',
+              textTransform: 'capitalize',
+              color: '#fff',
+              fontFamily: 'Roboto Light',
+            }}
+          />
+        </View>
       </View>
     </NativeAdView>
   );

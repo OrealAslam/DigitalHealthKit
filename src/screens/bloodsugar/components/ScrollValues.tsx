@@ -45,7 +45,7 @@ const ScrollValues = (props: any) => {
             <Text
               style={{
                 color: '#8A8A90',
-                fontFamily: 'Roboto-Medium',
+                fontFamily: 'Roboto',
                 fontWeight: '700',
                 fontSize: 10,
               }}>

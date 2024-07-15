@@ -223,12 +223,12 @@ export default function SaveButton(props: any) {
             alignSelf: 'center',
             position: 'absolute',
             bottom: 2,
-            backgroundColor: '#5F45FE',
+            backgroundColor: '#009f8b',
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 6,
           }}>
-          <Text style={{fontSize: 16, fontWeight: '600', color: '#fff'}}>
+          <Text style={{fontSize: 16, fontFamily: 'Montserrat-Bold', color: '#fff'}}>
             {props.langstr.main.save}
           </Text>
         </TouchableOpacity>
