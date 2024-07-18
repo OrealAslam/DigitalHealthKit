@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   heading: {
     color: '#2E2E2E',
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 15,
   },
   col: {
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     width: width * 0.89,
     height: undefined,
+    fontFamily: 'Raleway-Medium',
   },
 });
 export default FeedBackScreen;

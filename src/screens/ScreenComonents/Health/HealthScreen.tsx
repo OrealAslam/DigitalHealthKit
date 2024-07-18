@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   heading: {
     color: '#2E2E2E',
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 10,
   },
   tabMenu: {
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     color: '#2E2E2E',
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Raleway-Medium',
   },
   arrow: {
     width: 4,

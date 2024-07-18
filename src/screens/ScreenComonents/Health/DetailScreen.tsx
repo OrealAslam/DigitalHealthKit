@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     color: '#2E2E2E',
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Raleway-Medium',
   },
   arrow: {
     width: 4,
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     color: '#fff',
     marginTop: 'auto',
     marginLeft: '15%',
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   subHeading: {
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     fontSize: 16,
     color: '#000',
   },
@@ -390,10 +390,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#fff',
     lineHeight: 18,
+    fontFamily: 'Raleway-Medium',
   },
   btntxt: {
     fontSize: 15,
-    fontWeight: '500',
+    fontFamily: 'Montserrat-Bold',
     color: '#fff',
   },
   reference: {

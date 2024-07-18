@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   heading: {
     color: '#2E2E2E',
     fontSize: 26,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     fontStyle: 'normal',
   },
   img: {
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   disclaimerText: {
     fontSize: 13,
-    fontWeight: '500',
+    fontFamily: 'Raleway-Medium',
     lineHeight: 18,
     color: '#868686',
     textAlign: 'center',
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   btn: {
     width: btnWidth,
     height: 191 * btnRatio,
-    backgroundColor: `rgba(0, 159,139, 0.7)`,
+    backgroundColor: '#6300C7',
     justifyContent: 'center',
     alignSelf: 'center',
     position: 'relative',
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: '400',
+    fontFamily: 'Raleway-Medium',
     textAlign: 'center',
   },
 });

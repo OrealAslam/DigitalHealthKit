@@ -84,7 +84,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'en'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -99,7 +99,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'gr'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}
               onPress={() => setselectedLang('gr')}
@@ -118,7 +118,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'es'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -135,7 +135,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'fr'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -152,7 +152,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'tr'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -170,7 +170,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'it'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -188,7 +188,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'ru'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -206,7 +206,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'jp'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -224,7 +224,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'ind'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -242,7 +242,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'ko'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -259,7 +259,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'fl'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -277,7 +277,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'vt'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -294,7 +294,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'tml'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -311,7 +311,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'khmr'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -328,7 +328,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'thi'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -346,7 +346,7 @@ const LanguageScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.languageBox,
                 selectedLang == 'port'
-                  ? {backgroundColor: '#725DF2'}
+                  ? {backgroundColor: '#009F8B'}
                   : {backgroundColor: '#EBEBEC'},
               ]}>
               <Text
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
   heading: {
     color: '#2E2E2E',
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
   },
   languageContainer: {
     width: width,
@@ -401,7 +401,7 @@ const styles = StyleSheet.create({
   language: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: '500',
+    fontFamily: 'Raleway-Medium',
     textAlign: 'center',
   },
   bannerAd: {

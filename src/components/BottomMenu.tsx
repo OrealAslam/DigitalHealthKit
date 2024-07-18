@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
   },
   menuTxt: {
     fontSize: 10,
+    fontFamily: 'Raleway-Medium',
   }
 });
 export default BottomMenu;

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   heading: {
     color: '#2E2E2E',
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 10,
   },
   contentContainer: {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   content: {
     color: '#000',
     fontSize: 14,
-    fontWeight: '400',
+    fontFamily: 'Raleway-Medium',
     lineHeight: 22,
     marginBottom: 20,
   },
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   btntxt: {
     color: '#fff',
     fontSize: 14,
-    fontWeight: '500'
+    fontFamily: 'Montserrat-Bold',
   }
 });
 export default DisclaimerScreen;

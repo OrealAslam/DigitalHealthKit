@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   heading: {
     color: '#2E2E2E',
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     marginLeft: 10,
   },
   adContainer: {

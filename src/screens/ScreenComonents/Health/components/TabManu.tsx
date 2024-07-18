@@ -96,8 +96,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#A6A6A6',
     fontSize: 12,
-    fontWeight: '800',
-    fontFamily: 'Mont',
+    fontFamily: 'Montserrat-Bold',
     textAlign: 'center',
   },
 });

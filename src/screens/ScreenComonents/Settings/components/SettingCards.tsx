@@ -93,7 +93,7 @@ const SettingCards = (props: any) => {
           source={require('../../../../assets/settings/conditions.png')}
         />
       </TouchableOpacity> */}
-      <TouchableOpacity
+      {/* <TouchableOpacity
         activeOpacity={0.9}
         onPress={() => navigateScreen('BoardingHeartRate1')}>
         <ImageBackground
@@ -101,7 +101,7 @@ const SettingCards = (props: any) => {
           source={require('../../../../assets/settings/heart_rate.png')}>
           <Text style={styles.cardText}>{meaure}</Text>
         </ImageBackground>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {/* <TouchableOpacity activeOpacity={0.9}>
         <Image
           style={styles.card}
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   cardText: {
     color: '#515151',
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Raleway-Medium',
     marginLeft: '16%',
   },
 });

@@ -98,8 +98,8 @@ android {
         applicationId "com.healthapps.digitalhealthkit" // com.testapplication
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 50
-        versionName "1.2.4"
+        versionCode 51
+        versionName "1.2.5"
  
     }
 
